@@ -1,0 +1,30 @@
+.site-button
+{
+    display: inline-block;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.button-black
+{
+    background-color: #18150E;
+    color:#F5F5F2;
+}
+
+.button-white
+{
+    background-color: #18150E;
+    color:#F5F5F2;
+}
+
+.button-blur
+{
+   backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: #CAC8C333;
+    color:#F5F5F2;
+    border: 1px solid #CAC8C333;
+}
+
