@@ -21,8 +21,8 @@
 
 .button-blur
 {
-   backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+   backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     background-color: #CAC8C333;
     color:#F5F5F2;
     border: 1px solid #CAC8C333;
