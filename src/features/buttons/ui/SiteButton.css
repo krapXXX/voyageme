@@ -27,4 +27,8 @@
     color:#F5F5F2;
     border: 1px solid #CAC8C333;
 }
-
+.button-icon
+{
+    margin-left: 20px;
+    width:16px;
+}

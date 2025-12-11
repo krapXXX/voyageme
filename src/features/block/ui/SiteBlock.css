@@ -1,0 +1,13 @@
+.site-block {
+    background-color: #F5F5F2;
+    border-radius: 24px;
+    box-shadow: 3px 4px 15px 0px #C9C9C999;
+    margin: 20px;
+    position: relative; 
+}
+
+.site-block *
+{
+    box-shadow: none;
+}
+

@@ -13,3 +13,34 @@
     flex-direction: column;
 
 }
+.block
+{
+    margin: 112px 112px 160px ;
+}
+
+.grid1
+{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+gap:20px;
+}
+.grid2
+{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+gap:20px;
+}
+
+.block-img1
+{
+    position: absolute;
+    top:20px;
+    right:20px;
+}
+.block-text1
+{
+    position: absolute;
+    bottom:20px;
+    left:20px;
+    right:20px;
+}
