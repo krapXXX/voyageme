@@ -72,35 +72,37 @@ export default function Layout() {
         <footer>
             <div className="footer-col">
                 <img src="/img/Logo.png" alt="Logo" width="140" height="33" />
-                <h4 style={{ marginTop: "30px" }}>We create unforgettable travel
+                <h4 style={{ marginTop: "30px", color: "#CAC8C3" }}>We create unforgettable travel
                     experiences. From beach escapes to cultural adventures,
                     our team helps you find the perfect trip — with expert
                     support, secure booking, and the best deals around the globe.</h4>
             </div>
+
             <div className="footer-col">
                 <h3 style={{ color: "white" }}>Navigation</h3>
                 <Link to="/home" className="nav-link " title="Home" aria-label="Home" >
-                    <h4 style={{ marginTop: "20px" }}>  Home</h4>
+                    <h4 style={{ marginTop: "20px", color: "#CAC8C3" }}>  Home</h4>
                 </Link>
                 <Link to="/" className="nav-link " title="About Us" aria-label="About Us" >
-                    <h4>  About Us</h4>
+          
+                    <h4   style={{ color: "#CAC8C3" }}>  About Us</h4>
                 </Link>
                 <Link to="/" className="nav-link " title="Hot deals" aria-label="Hot deals" >
-                    <h4> Hot deals</h4>
+                    <h4   style={{ color: "#CAC8C3" }}> Hot deals</h4>
                 </Link>
                 <Link to="/" className="nav-link " title="Testimonial" aria-label="Testimonial" >
-                    <h4> Testimonial</h4>
+                    <h4   style={{ color: "#CAC8C3" }}> Testimonial</h4>
                 </Link>
                 <Link to="/" className="nav-link " title="Blog" aria-label="Blog" >
-                    <h4>  Blog</h4>
+                    <h4   style={{ color: "#CAC8C3" }}>  Blog</h4>
                 </Link>
             </div>
             <div className="footer-col">
-                <h3>  <Link to="/" className="nav-link " title="Contacts" aria-label="Contacts" >Contacts</Link></h3>
-                <h4 style={{ marginTop: "20px" }}>
+                <h3   style={{ color: "#CAC8C3" }}>  <Link to="/" className="nav-link " title="Contacts" aria-label="Contacts" >Contacts</Link></h3>
+                <h4 style={{ marginTop: "20px",color: "#CAC8C3"  }}>
                     <i className="bi bi-pin"></i>17A Horizon Street, Office 304 Kyiv, 01001, Ukraine</h4>
-                <h4> <i className="bi bi-telephone"></i>+380671215656</h4>
-                <h4> <i className="bi bi-envelope"></i>voyageme.support@gmail.com</h4>
+                <h4   style={{ color: "#CAC8C3" }}> <i className="bi bi-telephone"></i>+380671215656</h4>
+                <h4   style={{ color: "#CAC8C3" }}> <i className="bi bi-envelope"></i>voyageme.support@gmail.com</h4>
             </div>
         </footer>
     </>

@@ -1,3 +1,7 @@
+
+body{
+    font: General Sans Variable
+}
 .hero-section {
     width: 100%;
     height: 100vh;
@@ -15,7 +19,7 @@
 }
 .block
 {
-    margin: 112px 112px 160px ;
+    margin: 160px 150px 160px 150px;
 }
 
 .grid1
@@ -44,3 +48,19 @@ gap:20px;
     left:20px;
     right:20px;
 }
+
+.gradient
+{
+    color: '#F5F5F2';
+ position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.45) 100%
+    );
+    opacity: 1;
+    z-index: 1;
+    pointer-events: none;
+}
+
