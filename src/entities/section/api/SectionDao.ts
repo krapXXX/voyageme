@@ -180,7 +180,102 @@ export default class SectionDao {
                                 imageUrl: [
                                     "/img/Egypt.jpg",
                                 ]
+                            },
+                            {
+                                slug: "balloons-over-cappadocia",
+                                name: "Balloons Over Cappadocia",
+                                location: "Cappadocia, Turkey",
+                                price: "UAH 39,800",
+                                date: "Available April – October",
+                                duration: "5 nights",
+                                description: "Sunrise balloons, ancient valleys, and iconic mountain horizons.",
+                                descriptionFull:
+                                    "Experience the magic of Cappadocia, where sunrise hot-air balloons float above sculpted valleys, cave dwellings, and ancient stone formations. A breathtaking escape for explorers, photographers, and dreamers.",
+                                tourists: "2 adults",
+                                departure: "Departure from Chisinau, Moldova",
+                                includes: [
+                                    "Sunrise hot-air balloon flight",
+                                    "Tour of Göreme & valley viewpoints",
+                                    "Visit to underground cities",
+                                    "Traditional Turkish dinner",
+                                    "Airport transfer & assistance"
+                                ],
+                                imageUrl: [
+                                    "/img/Cappadocia.png",
+                                ]
+                            },
+                            {
+                                slug: "canyon-escape-oglesby",
+                                name: "Canyon Escape Oglesby",
+                                location: "Oglesby, United States",
+                                price: "UAH 46,200",
+                                date: "March – November",
+                                duration: "4 nights",
+                                description: "Sandstone canyons, forest trails, and peaceful riverside nature.",
+                                descriptionFull:
+                                    "Discover Oglesby — a serene American nature retreat with sandstone gorges, waterfalls, forest trails, and quiet riversides. A perfect journey for hikers and travelers seeking calm, nature, and scenic viewpoints.",
+                                tourists: "2 adults",
+                                departure: "Departure from Chisinau, Moldova",
+                                includes: [
+                                    "Daily guided hikes",
+                                    "Canyon viewpoint tour",
+                                    "Waterfall photo stops",
+                                    "Local dining experience",
+                                    "Travel coordinator assistance"
+                                ],
+                                imageUrl: [
+                                    "/img/Oglesby.png",
+                                ]
+                            },
+                            {
+                                slug: "golden-dunes-rub-al-khali",
+                                name: "Golden Dunes of Rub' al Khali",
+                                location: "Rub' al Khali, UAE",
+                                price: "UAH 53,900",
+                                date: "October – April",
+                                duration: "4 nights",
+                                description: "Endless desert horizons, silent dunes, and warm evening winds.",
+                                descriptionFull:
+                                    "Journey into Rub' al Khali, the legendary Empty Quarter. Explore vast golden dunes, watch dramatic sunsets, and relax in luxury desert camps with authentic Arabian hospitality.",
+                                tourists: "2 adults",
+                                departure: "Departure from Chisinau, Moldova",
+                                includes: [
+                                    "Sunset desert safari",
+                                    "Camel ride and dune bashing",
+                                    "Luxury tent stay",
+                                    "Arabian-style dinner & entertainment",
+                                    "Airport transfer & guide"
+                                ],
+                                imageUrl: [
+                                    "/img/Khali.png",
+                                ]
+                            },
+                            {
+                                slug: "emerald-waters-palawan",
+                                name: "Emerald Waters of Palawan",
+                                location: "Palawan, Philippines",
+                                price: "UAH 62,700",
+                                date: "November – June",
+                                duration: "6 nights",
+                                description: "Turquoise lagoons, lush reefs, and postcard-perfect islands.",
+                                descriptionFull:
+                                    "Escape to Palawan — a world-famous tropical paradise with crystal-clear lagoons, dramatic limestone cliffs, and hidden beaches. Ideal for couples, adventurers, and nature lovers.",
+                                tourists: "2 adults",
+                                departure: "Departure from Chisinau, Moldova",
+                                includes: [
+                                    "Island-hopping tour",
+                                    "Kayaking & snorkeling",
+                                    "Beachfront resort stay",
+                                    "Local cuisine experience",
+                                    "24/7 travel assistance"
+                                ],
+                                imageUrl: [
+                                    "/img/Palawan.png",
+                                ]
                             }
+
+
+
                         ];
 
 

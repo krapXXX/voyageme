@@ -38,13 +38,6 @@ export default function Layout() {
 
                             <li className="nav-item">
 
-                                <Link to="/" className="nav-link " title="Blog" aria-label="Blog" >
-                                    Blog
-                                </Link>
-                            </li>
-
-                            <li className="nav-item">
-
                                 <Link to="/" className="nav-link " title="Contacts" aria-label="Contacts" >
                                     Contacts
                                 </Link>
@@ -93,9 +86,7 @@ export default function Layout() {
                 <Link to="/" className="nav-link " title="Testimonial" aria-label="Testimonial" >
                     <h4   style={{ color: "#CAC8C3" }}> Testimonial</h4>
                 </Link>
-                <Link to="/" className="nav-link " title="Blog" aria-label="Blog" >
-                    <h4   style={{ color: "#CAC8C3" }}>  Blog</h4>
-                </Link>
+                
             </div>
             <div className="footer-col">
                 <h3   style={{ color: "#CAC8C3" }}>  <Link to="/" className="nav-link " title="Contacts" aria-label="Contacts" >Contacts</Link></h3>
