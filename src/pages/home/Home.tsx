@@ -136,9 +136,13 @@ export default function Home() {
                     </div>
                 </div>
                 <div className = "text-container">
-<h4>We’re more than just a travel agency — we’re<strong> your trusted partner </strong>in creating unforgettable journeys.</h4>
-<h4 style={{ marginTop: "15px" }}>With years of experience and a passion for unique adventures, we turn your travel<strong> dreams into reality.</strong></h4>
-<h4 style={{ marginTop: "15px" }}>From sunny getaways to cultural escapes, we’ve got the perfect trip<strong> waiting for you.</strong></h4>
+ <h4>We’re more than just a travel agency — we’re
+    <strong style={{ fontStyle: "italic" }}> your trusted partner </strong>
+    in creating unforgettable journeys.</h4>
+ <h4 style={{ marginTop: "15px" }}>With years of experience and a passion 
+    for unique adventures, we turn your travel<strong style={{ fontStyle: "italic" }}> 
+        dreams into reality.</strong></h4>
+ <h4 style={{ marginTop: "15px" }}>From sunny getaways to cultural escapes, we’ve got the perfect trip<strong style={{ fontStyle: "italic" }}> waiting for you.</strong></h4>
                     <div style={{ marginTop: "110px" }}>
                       
                         <SiteButton buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
