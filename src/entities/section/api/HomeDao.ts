@@ -1,5 +1,5 @@
 import type { ProductPageSection } from "../../product/model/ProductType";
-import type { SectionType } from "../model/SectionType";
+import type { SectionType } from "../model/HomeType";
 
 export default class SectionDao {
     static cacheSections: Array<ProductPageSection> | undefined;
