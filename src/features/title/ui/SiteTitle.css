@@ -2,7 +2,7 @@
      font-size: 50px;
     font-weight: 500;
     margin-top: 5px;
-   color: #18150E
+   color: #18150E;
 }
 .subtitle{
      font-size: 20px;
@@ -11,6 +11,20 @@
      text-transform: uppercase;
      color:#6B6963;
 }
+.title-block a,
+.title-block a:visited,
+.title-block a:hover,
+.title-block a:active {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.site-title-link {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
 .title-block
 {
     display: flex;

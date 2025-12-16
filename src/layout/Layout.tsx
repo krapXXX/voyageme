@@ -2,11 +2,13 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import './ui/Layout.css'
 import ButtonTypes from "../features/buttons/types/ButtonTypes";
 import SiteButton from "../features/buttons/SiteButton";
+import RequestBlock from "../component/RequestBlock";
 
 export default function Layout() {
-
+ 
      const location = useLocation();
     const isHome = location.pathname === "/home" || location.pathname === "/";
+    const isRequest = location.pathname ==="/home" ||location.pathname ==="/about"||location.pathname ==="/deals"
     return <>
         <header className={isHome ? "header-white" : "header-black"}>
             <nav className="navbar navbar-expand-lg ">
@@ -53,7 +55,7 @@ export default function Layout() {
                             </li>
                         </ul>
                         <div className="navbar-btn ms-3">
-                            <SiteButton buttonType={isHome ? ButtonTypes.Blur : ButtonTypes.Black} text="Pick a Tour"/>
+                            <SiteButton  to="/deals" buttonType={isHome ? ButtonTypes.Blur : ButtonTypes.Black} text="Pick a Tour"/>
 
                         </div>
 
@@ -62,7 +64,10 @@ export default function Layout() {
             </nav>
         </header >
         <main ><Outlet /></main>
+
+         {isRequest && ( <RequestBlock />)}
         <footer>
+            <div className = "footer">
             <div className="footer-col">
                 <img src="/img/Logo.png" alt="Logo" width="140" height="33" />
                 <h4 style={{ marginTop: "30px", color: "#CAC8C3" }}>We create unforgettable travel
@@ -95,6 +100,9 @@ export default function Layout() {
                 <h4   style={{ color: "#CAC8C3" }}> <i className="bi bi-telephone"></i>+380671215656</h4>
                 <h4   style={{ color: "#CAC8C3" }}> <i className="bi bi-envelope"></i>voyageme.support@gmail.com</h4>
             </div>
+            </div>
+                            <img src="/img/LineF.png" style={{ width: "100%" }} />
+            <h4 style ={{width:"100%", textAlign:"center", color: "#CAC8C3",padding:"40px"}}>© 2025 — VoyageMe</h4>
         </footer>
     </>
 }

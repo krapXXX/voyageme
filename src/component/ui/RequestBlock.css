@@ -1,0 +1,23 @@
+.request-block
+{
+    
+     display: flex;
+    align-items: center;
+    justify-content: center;
+     text-align: center;
+}
+
+.socials {
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+
+    width: 49%;                    
+}
+.request-location {
+    display: flex;
+    flex-direction: column;
+}

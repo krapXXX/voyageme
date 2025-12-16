@@ -8,7 +8,6 @@ import './ui/Home.css';
 import type { TestimonialPageSection } from '../../entities/testimonial/model/Testimonial';
 import TestimonialDao from '../../entities/section/api/TestimonialDao';
 import SiteTitle from '../../features/title/SiteTitle';
-import SiteInput from '../../features/input/SiteInput';
 
 const faqData = [
     {
@@ -105,6 +104,7 @@ export default function Home() {
     const [sections, setSections] = useState<ProductPageSection[]>([]);
     const [galleryItems, setGalleryItems] = useState<ProductPageSection[]>([]);
     const [testimonialItems, setTestimonialItems] = useState<TestimonialPageSection[]>([]);
+   
 
     useEffect(() => {
         SectionDao.getSections().then(data => {
@@ -128,7 +128,7 @@ export default function Home() {
                 <h1 style={{ color: "white" }}>Your Next Adventure Starts Here</h1>
                 <h4 style={{ marginTop: "30px", color: "#A8A8A8" }}>Dreaming of sun-kissed beaches, historic cities, or mountain escapes? Don't wait — the world is ready for you!</h4>
                 <div style={{ marginTop: "30px" }}>
-                    <SiteButton buttonType={ButtonTypes.Blur} text="Explore Hot Deals" width={"290px"} />
+                    <SiteButton to="/deals" buttonType={ButtonTypes.Blur} text="Explore Hot Deals" width={"290px"} />
                 </div>
             </div>
         </div>
@@ -181,12 +181,12 @@ export default function Home() {
         {/* Unforgettable Journeys At Irresistible Prices */}
         <div className="block">
             <div className="grid2">
-                <SiteTitle title="Unforgettable Journeys At Irresistible Prices" subtitle="HOT DEALS" />
+                <SiteTitle to="/deals" title="Unforgettable Journeys At Irresistible Prices" subtitle="HOT DEALS" />
 
                 <div className="column-container" >
                     <h4 >Don’t miss out on our best last-minute deals — limited spots, unbeatable prices, and unforgettable experiences.</h4>
                     <div style={{ marginTop: "30px" }}>
-                        <SiteButton buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
+                        <SiteButton to="/deals" buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
                     </div>
                 </div>
             </div>
@@ -226,7 +226,7 @@ export default function Home() {
                 <h2 style={{ color: '#F5F5F2' }}>Book Your Trip 2 Months in Advance </h2>
                 <h2 style={{ color: '#F5F5F2', fontWeight: '700', marginBottom: "60px" }}>and Get 15% Off!</h2>
 
-                <SiteButton buttonType={ButtonTypes.White} text="Order Now" icon={<img src="/img/arrow.png" />} width={"390px"} />
+                <SiteButton to="#book-section" buttonType={ButtonTypes.White} text="Order Now" icon={<img src="/img/arrow.png" />} width={"390px"} />
 
             </div>
         </div>
@@ -236,7 +236,7 @@ export default function Home() {
             <div className="grid2">
 
                 <div className="column-container" >
-                    <SiteTitle title="Dream. Travel. Live." subtitle="ABOUT us" />
+                    <SiteTitle to="/us" title="Dream. Travel. Live." subtitle="ABOUT us" />
 
                     <div style={{ marginTop: "110px" }}>
                         <SiteBlock height='198px' width='392px' backgroundImage="/img/dream_travel_live.jpg" />
@@ -252,7 +252,7 @@ export default function Home() {
                     <h4 style={{ marginTop: "15px" }}>From sunny getaways to cultural escapes, we’ve got the perfect trip<strong style={{ fontStyle: "italic" }}> waiting for you.</strong></h4>
                     <div style={{ marginTop: "110px" }}>
 
-                        <SiteButton buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
+                        <SiteButton to="/us" buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
                     </div>
                 </div>
             </div>
@@ -304,14 +304,14 @@ export default function Home() {
         {/* Read real stories of our clients */}
         <div className="block">
             <div className="grid1">
-                <SiteTitle title="Read real stories of our clients" subtitle="OUR TESTIMONIAL" />
+                <SiteTitle to="/testimonials" title="Read real stories of our clients" subtitle="OUR TESTIMONIAL" />
 
 
                 {testimonialItems.slice(0, 2).map((item, i) => (
                     <TestimonialCard key={i} item={item} />
                 ))}
                 <div style={{ marginTop: "270px" }} >
-                    <SiteButton buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
+                    <SiteButton to="/testimonials" buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
                 </div>
 
                 {testimonialItems.slice(2, 4).map((item, i) => (
@@ -354,41 +354,7 @@ export default function Home() {
                 })}
             </div>
         </div>
-
-        <div className="block ">
-            <div className="grid3 ">
-                <SiteBlock height={"650px"} backgroundImage={"/img/request.png"}>
-                    <div className="gradient request-block">
-                        <div className="col-container " style={{ width: "60%" }}>
-                            <h3 style={{ color: "#F5F5F2" }}>Let Us Do The Planning – You Do The Packing!</h3>
-                            <h4 style={{ color: "#F5F5F2", marginTop: "20px" }}>Submit a request and get your perfect vacation, effortlessly.</h4>
-                            <div >
-                                <SiteInput text="Name" />
-                                <SiteInput text="Phone Number" />
-                            </div>
-                            <div style={{ marginTop: "50px" }}>
-                                <SiteButton buttonType={ButtonTypes.Blur} text="Leave a Request" width={"100%"} />
-                            </div>
-                        </div>
-                    </div>
-                </SiteBlock>
-                <div>
-                    <h3>Our Location</h3>
-                    <h4 style ={{paddingTop:"20px"}}><img src = "/img/location.png" style ={{marginRight:"10px"}} className = "icon"/>17A Horizon Street, Office 304, Kyiv, 01001, Ukraine</h4>
-                    <a href="https://www.google.com.ua/maps/place/%D0%9A%D0%B8%D1%97%D0%B2,+02000/@50.453877,30.4509415,11.41z/data=!4m6!3m5!1s0x40d4cf4ee15a4505:0x764931d2170146fe!8m2!3d50.4503596!4d30.5245025!16zL20vMDJzbjM0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" >
-    <img src="/img/Figmap.png" style={{ paddingTop: "30px", width: "100%", cursor:"pointer" }} />
-</a>
-
-                    <div className = "socials row-container">
-                    <h3 >Social Media </h3>
-                    <div className = "row-container"> 
-                    <img src = "/img/Facebook.png"className = "icon" style ={{marginRight:"30px"}} />
-                    <img src = "/img/Instagram.png" className = "icon"style ={{marginRight:"30px"}} />
-                    <img src = "/img/Linkedin.png" className = "icon"/>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div id ="book-section"></div>
+       
     </>
 }
