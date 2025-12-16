@@ -5,31 +5,89 @@ import ButtonTypes from '../../features/buttons/types/ButtonTypes';
 import SectionDao from '../../entities/section/api/HomeDao';
 import type { ProductPageSection } from '../../entities/product/model/ProductType';
 import './ui/Home.css';
-import { TestimonialPageSection } from '../../entities/testimonial/model/Testimonial';
+import type { TestimonialPageSection } from '../../entities/testimonial/model/Testimonial';
+import TestimonialDao from '../../entities/section/api/TestimonialDao';
+import SiteTitle from '../../features/title/SiteTitle';
+
+
+const steps = [
+    { number: "01", text: "Choose a tour" },
+    { number: "02", text: "Get a free consultation" },
+    { number: "03", text: "Agree on the details" },
+    { number: "04", text: "Pay conveniently" },
+    { number: "05", text: "Go on a trip!" }
+];
+function Step({ step }: { step: { number: string; text: string } }) {
+    return (
+        <div className="step-wrapper">
+            <div className="step-circle">{step.number}</div>
+            <h4 style={{ marginTop: "10px" }}>{step.text}</h4>
+        </div>
+    );
+}
+
+function GalleryItem({ item, height }: { item: ProductPageSection, height: string }) {
+    return (
+        <SiteBlock height={height} backgroundImage={item.imageUrl[0]}>
+            <div className="gradient">
+                <h3 className="block-text1" style={{ color: "#F5F5F2", paddingRight: "100px" }}>
+                    {item.name}, {item.location}
+                </h3>
+                <img src="/img/pointer.png" className="block-img2" />
+            </div>
+        </SiteBlock>
+    );
+}
+function TestimonialCard({ item }: { item: TestimonialPageSection }) {
+    return (
+        <SiteBlock height="320px">
+            <div className="column-container " style={{ padding: "20px" }}>
+
+                <div className="row-container">
+                    <img src={item.imageUrl} className="testimon-img" />
+
+                    <div className="column-container">
+                        <h4><strong>{item.name}</strong></h4>
+                        <h4 style={{ color: "#505050" }}>
+                            {item.origin} — {item.trip}
+                        </h4>
+                    </div>
+                </div>
+
+                <div style={{ marginTop: "30px" }}>
+                    <h4>{item.message}</h4>
+                </div>
+
+            </div>
+        </SiteBlock>
+    );
+}
 
 
 export default function Home() {
     const [sections, setSections] = useState<ProductPageSection[]>([]);
-const [galleryItems, setGalleryItems] = useState<ProductPageSection[]>([]);
-const [testimonialItems,setTestimonialItems]=useState<TestimonialPageSection[]>([]);
-  
-useEffect(() => {
-    SectionDao.getSections().then(data => {
-        setSections(data);
+    const [galleryItems, setGalleryItems] = useState<ProductPageSection[]>([]);
+    const [testimonialItems, setTestimonialItems] = useState<TestimonialPageSection[]>([]);
 
-        const shuffled = data.slice().sort(() => Math.random() - 0.5);
-        setGalleryItems(shuffled.slice(0, 4)); 
+    useEffect(() => {
+        SectionDao.getSections().then(data => {
+            setSections(data);
 
- const shuffled = data.slice().sort(() => Math.random() - 0.5);
-        setGalleryItems(shuffled.slice(0, 4)); 
+            const shuffledGallery = [...data].sort(() => Math.random() - 0.5);
+            setGalleryItems(shuffledGallery.slice(0, 4));
+        });
 
-    });
-}, []);
+        TestimonialDao.getTestimonials().then(testimonials => {
+            const shuffled = [...testimonials].sort(() => Math.random() - 0.5);
+            setTestimonialItems(shuffled.slice(0, 4));
+        });
+    }, []);
+
 
     return <>
         {/* Your Next Adventure Starts Here */}
         <div className="block " style={{ backgroundImage: 'url("/img/hero.png")', backgroundSize: "cover", width: "100%", height: "900px", marginRight: "0", marginLeft: "0", marginTop: "0" }}>
-            <div className="text-container" style={{ width: "50%", marginTop: "280px", position: "absolute", left: "5em", top: "0" }}>
+            <div className="column-container" style={{ width: "50%", marginTop: "280px", position: "absolute", left: "5em", top: "0" }}>
                 <h1 style={{ color: "white" }}>Your Next Adventure Starts Here</h1>
                 <h4 style={{ marginTop: "30px", color: "#A8A8A8" }}>Dreaming of sun-kissed beaches, historic cities, or mountain escapes? Don't wait — the world is ready for you!</h4>
                 <div style={{ marginTop: "30px" }}>
@@ -43,12 +101,9 @@ useEffect(() => {
 
             <div className="grid1">
 
-                <div className="text-container" >
-                    <h4 style={{ textTransform: "uppercase", color: "#6B6963" }}>OUR BENEFITS</h4>
-                    <h2>Discover World With Us</h2>
-                </div>
+                <SiteTitle title="Discover World With Us" subtitle="OUR BENEFITS" />
 
-                <div className="text-container" >
+                <div className="column-container" >
                     <SiteBlock height='300px'>
                         <img src="/img/01.png" className="block-img1" />
                         <div className="block-text1">
@@ -65,7 +120,7 @@ useEffect(() => {
                     </SiteBlock>
                 </div>
 
-                <div className="text-container" >
+                <div className="column-container" >
                     <SiteBlock height='300px'>
                         <img src="/img/02.png" className="block-img1" />
                         <div className="block-text1">
@@ -89,11 +144,9 @@ useEffect(() => {
         {/* Unforgettable Journeys At Irresistible Prices */}
         <div className="block">
             <div className="grid2">
-                <div className="text-container" >
-                    <h4 style={{ textTransform: "uppercase", color: "#6B6963" }}>HOT DEALS</h4>
-                    <h2>Unforgettable Journeys At Irresistible Prices</h2>
-                </div>
-                <div className="text-container" >
+                <SiteTitle title="Unforgettable Journeys At Irresistible Prices" subtitle="HOT DEALS" />
+
+                <div className="column-container" >
                     <h4 >Don’t miss out on our best last-minute deals — limited spots, unbeatable prices, and unforgettable experiences.</h4>
                     <div style={{ marginTop: "30px" }}>
                         <SiteButton buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
@@ -131,7 +184,7 @@ useEffect(() => {
         </div>
         {/* and Get 15% Off! */}
         <div className="block" style={{ backgroundImage: 'url("/img/hero2.jpg")', backgroundSize: "cover", height: "600px", marginRight: "0", marginLeft: "0" }}>
-            <div className="text-container" style={{ width: "100%", paddingTop: "160px", justifyContent: "center", alignItems: "center" }}>
+            <div className="column-container" style={{ width: "100%", paddingTop: "160px", justifyContent: "center", alignItems: "center" }}>
                 <h3 style={{ color: '#CAC8C3' }}>Plan Early, Travel Smart: </h3>
                 <h2 style={{ color: '#F5F5F2' }}>Book Your Trip 2 Months in Advance </h2>
                 <h2 style={{ color: '#F5F5F2', fontWeight: '700', marginBottom: "60px" }}>and Get 15% Off!</h2>
@@ -144,14 +197,15 @@ useEffect(() => {
         {/* Dream. Travel. Live. */}
         <div className="block">
             <div className="grid2">
-                <div className="text-container" >
-                    <h4 style={{ textTransform: "uppercase", color: "#6B6963" }}>ABOUT us</h4>
-                    <h2>Dream. Travel. Live.</h2>
+
+                <div className="column-container" >
+                    <SiteTitle title="Dream. Travel. Live." subtitle="ABOUT us" />
+
                     <div style={{ marginTop: "110px" }}>
                         <SiteBlock height='198px' width='392px' backgroundImage="/img/dream_travel_live.jpg" />
                     </div>
                 </div>
-                <div className="text-container">
+                <div className="column-container">
                     <h4>We’re more than just a travel agency — we’re
                         <strong style={{ fontStyle: "italic" }}> your trusted partner </strong>
                         in creating unforgettable journeys.</h4>
@@ -165,166 +219,72 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-            <div className="text-container" style={{ marginTop: "100px" }}>
+            <div className="column-container" style={{ marginTop: "100px" }}>
                 <h2>Only 5 steps to the dream!</h2>
+
                 <div className="steps-row">
-                    <div className="step-wrapper">
-                        <div className="step-circle">01</div>
-                        <h4 style={{ marginTop: "10px" }}>Choose a tour</h4>
-                    </div>
-
-                    <img className="step-arrow" src="/img/Arrow_long.png" />
-
-                    <div className="step-wrapper">
-                        <div className="step-circle">02</div>
-                        <h4 style={{ marginTop: "10px" }}>Get a free consultation</h4>
-                    </div>
-
-                    <img className="step-arrow" src="/img/Arrow_long.png" />
-
-                    <div className="step-wrapper">
-                        <div className="step-circle">03</div>
-                        <h4 style={{ marginTop: "10px" }}>Agree on the details</h4>
-                    </div>
-
-                    <img className="step-arrow" src="/img/Arrow_long.png" />
-
-                    <div className="step-wrapper">
-                        <div className="step-circle">04</div>
-                        <h4 style={{ marginTop: "10px" }}>Pay conveniently</h4>
-                    </div>
-
-                    <img className="step-arrow" src="/img/Arrow_long.png" />
-
-                    <div className="step-wrapper">
-                        <div className="step-circle">05</div>
-                        <h4 style={{ marginTop: "10px" }}>Go on a trip!</h4>
-                    </div>
-
+                    {steps.map((step, index) => (
+                        <>
+                            <Step step={step} />
+                            {index !== steps.length - 1 && <img className="step-arrow" src="/img/Arrow_long.png" />}
+                        </>
+                    ))}
 
                 </div>
             </div>
+
         </div>
 
         {/* Postcards from Paradise */}
-<div className="block">
-    <div className="text-container">
-        <h4 style={{ textTransform: "uppercase", color: "#6B6963" }}>
-            our gallery
-        </h4>
-        <h2>Postcards from Paradise</h2>
+        <div className="block">
 
-       <div className="grid2">
+            <div className="column-container">
 
-    <div className="text-container">
-        <div className="grid3">
+                <SiteTitle title="Postcards from Paradise" subtitle="our gallery" />
 
-            {galleryItems[0] && (
-                <SiteBlock
-                    height="340px"
-                    backgroundImage={galleryItems[0].imageUrl[0]}
-                >
-                    <div className="gradient">
-                        <h3 className="block-text1" style={{ color: "#F5F5F2" }}>
-                            {galleryItems[0].name}, {galleryItems[0].location}
-                        </h3>
+                <div className="grid2">
+                    <div className="column-container">
+
+                        <div className="grid3">
+                            {galleryItems.slice(0, 2).map(item => (
+                                <GalleryItem key={item.slug} item={item} height="340px" />
+                            ))}
+                        </div>
+
+                        {galleryItems[2] && (
+                            <GalleryItem item={galleryItems[2]} height="340px" />
+                        )}
                     </div>
-                </SiteBlock>
-            )}
 
-            {galleryItems[1] && (
-                <SiteBlock
-                    height="340px"
-                    backgroundImage={galleryItems[1].imageUrl[0]}
-                >
-                    <div className="gradient">
-                        <h3 className="block-text1" style={{ color: "#F5F5F2" }}>
-                            {galleryItems[1].name}, {galleryItems[1].location}
-                        </h3>
-                    </div>
-                </SiteBlock>
-            )}
-
-        </div>
-
-        {galleryItems[2] && (
-            <SiteBlock
-                height="340px"
-                backgroundImage={galleryItems[2].imageUrl[0]}
-            >
-                <div className="gradient">
-                    <h3 className="block-text1" style={{ color: "#F5F5F2" }}>
-                        {galleryItems[2].name}, {galleryItems[2].location}
-                    </h3>
+                    {galleryItems[3] && (
+                        <GalleryItem item={galleryItems[3]} height="700px" />
+                    )}
                 </div>
-            </SiteBlock>
-        )}
-    </div>
 
-    {galleryItems[3] && (
-        <SiteBlock
-            height="700px"
-            backgroundImage={galleryItems[3].imageUrl[0]}
-        >
-            <div className="gradient">
-                <h3 className="block-text1" style={{ color: "#F5F5F2" }}>
-                    {galleryItems[3].name}, {galleryItems[3].location}
-                </h3>
             </div>
-        </SiteBlock>
-    )}
-
-</div>
-
-    </div>
-</div>
+        </div>
 
         {/* Read real stories of our clients */}
-  <div className="block">
-
+        <div className="block">
             <div className="grid1">
+                <SiteTitle title="Read real stories of our clients" subtitle="OUR TESTIMONIAL" />
 
-                <div className="text-container" >
-                    <h4 style={{ textTransform: "uppercase", color: "#6B6963" }}>OUR TESTIMONIAL</h4>
-                    <h2>Read real stories of our clients</h2>
+
+                {testimonialItems.slice(0, 2).map((item, i) => (
+                    <TestimonialCard key={i} item={item} />
+                ))}
+                <div style={{ marginTop: "270px" }} >
+                    <SiteButton buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
                 </div>
 
-                <div className="text-container" >
-                    <SiteBlock height='320px'>
-                        <img src="/img/01.png" className="block-img1" />
-                        <div className="block-text1">
-                            <h3>Individual approach</h3>
-                            <h4>Each trip is created according to your wishes</h4>
-                        </div>
-                    </SiteBlock>
-                    <SiteBlock height='320px' >
-                        <img src="/img/03.png" className="block-img1" />
-                        <div className="block-text1">
-                            <h3>24/7 support</h3>
-                            <h4>We are there for you at every stage of your trip</h4>
-                        </div>
-                    </SiteBlock>
-                </div>
-
-                <div className="text-container" >
-                    <SiteBlock height='320px'>
-                        <img src="/img/02.png" className="block-img1" />
-                        <div className="block-text1">
-                            <h3>Security guarantee</h3>
-                            <h4>Reliable partners, trusted hotels, insurance</h4>
-                        </div>
-                    </SiteBlock>
-                    <SiteBlock height='320px'>
-                        <img src="/img/04.png" className="block-img1" />
-                        <div className="block-text1">
-                            <h3>Secure booking</h3>
-                            <h4>Simple and secure online payments</h4>
-                        </div>
-                    </SiteBlock>
-                </div>
+                {testimonialItems.slice(2, 4).map((item, i) => (
+                    <TestimonialCard key={i} item={item} />
+                ))}
 
             </div>
 
+
         </div>
+
     </>
 }

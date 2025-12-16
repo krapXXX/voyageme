@@ -4,11 +4,15 @@ body{
 }
 
 
-.text-container
+.column-container
 {
     display: flex;
     flex-direction: column;
 
+}
+.row-container {
+    display: flex;
+    align-items: center;
 }
 .block
 {
@@ -40,6 +44,12 @@ gap:20px;
     top:20px;
     right:20px;
 }
+.block-img2
+{
+    position: absolute;
+    bottom:20px;
+    right:20px;
+}
 .block-text1
 {
     position: absolute;
@@ -47,11 +57,18 @@ gap:20px;
     left:20px;
     right:20px;
 }
-
-.gradient
+.testimon-img
 {
-    color: '#F5F5F2';
- position: absolute;
+    margin-right: 24px;
+width:62px;
+height: 62px;
+border-radius:100px;
+ object-fit:cover; 
+}
+
+.gradient {
+    color: #F5F5F2;
+    position: absolute;
     inset: 0;
     background: linear-gradient(
         to bottom,
@@ -59,9 +76,10 @@ gap:20px;
         rgba(0,0,0,0.45) 100%
     );
     opacity: 1;
-    z-index: 1;
+    z-index: 5;
     pointer-events: none;
 }
+
 
 .step
 {

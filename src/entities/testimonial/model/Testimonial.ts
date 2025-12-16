@@ -1,6 +1,6 @@
 type TestimonialPageSection = {
     name: string;
-     location: string;
+     origin: string;
     trip: string;
     message: string;     
     imageUrl?: string;        
