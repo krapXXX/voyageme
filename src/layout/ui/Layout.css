@@ -1,33 +1,32 @@
 body{
-    margin: -2em;
     padding: 0;
-    font-family: General Sans Variable, sans-serif;
+    margin: 0;
       color:#F5F5F2;
      font-size: 20px;
      font-weight: 400;
+     position: relative;
 }
-h1, h2, h3 {
+h1, h2, h3,h4 {
+    font-family: General Sans Variable, sans-serif;
     color: #18150E;
 }
 h1{
     font-size: 64px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 h2{
      font-size: 50px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 h3{
      font-size: 28px;
-    font-weight: 500;
+    font-weight:500;
 }
 
 h4{
-    color:#000000;
      font-size: 20px;
-    font-weight: 400;
 }
 header {
     position: absolute;
@@ -36,8 +35,31 @@ header {
     width: 100%;
     z-index: 999;
 }
+.header-white {
+    background-color: transparent;
+}
+
+.header-white .nav-link {
+      color: #F5F5F2 !important;
+}
+
+.header-black {
+    background-color: transparent;
+}
+
+.header-black .nav-link {
+    color: #18150E !important;
+}
+
+.header-black .navbar-brand img {
+    filter: brightness(0) invert(0);
+}
+
+
 footer{
-    
+     position: absolute;
+    bottom: 100;
+    left: 0;
     display:grid;
     grid-template-columns: 3fr 2fr 3fr;
     gap:5em;

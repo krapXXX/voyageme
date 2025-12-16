@@ -1,0 +1,32 @@
+.input-wrapper {
+    margin-top:20px;
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 36px; 
+}
+
+.input-label {
+    position:absolute;
+    top:0;
+    left:0;
+    color: #F5F5F2;
+     z-index: 1;
+}
+
+.input-block {
+    width: 100%;
+    border-radius: 40px;
+    border: none;
+    padding: 14px 20px;
+    outline: none;
+    background-color: #ffffff;
+    color: #18150E;
+    box-shadow: 3px 4px 20px 0px #C9C9C930;
+     position: relative;
+    z-index: 2; 
+}
+
+.input-block::placeholder {
+    color: #A8A8A8;
+}

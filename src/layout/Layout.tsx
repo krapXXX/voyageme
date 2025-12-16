@@ -1,11 +1,14 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import './ui/Layout.css'
 import ButtonTypes from "../features/buttons/types/ButtonTypes";
 import SiteButton from "../features/buttons/SiteButton";
 
 export default function Layout() {
+
+     const location = useLocation();
+    const isHome = location.pathname === "/home" || location.pathname === "/";
     return <>
-        <header >
+        <header className={isHome ? "header-white" : "header-black"}>
             <nav className="navbar navbar-expand-lg ">
                 <div className="container-fluid">
                     <Link to="/home" className="navbar-brand" title="Home Page" aria-label="Home Page">
@@ -17,28 +20,25 @@ export default function Layout() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto">
                             <li className="nav-item">
-                                <Link to="/" className="nav-link " title="About Us" aria-label="About Us" >
+                                <Link to="/about" className="nav-link " title="About Us" aria-label="About Us" >
                                     About Us
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-
-                                <Link to="/" className="nav-link " title="Hot deals" aria-label="Hot deals" >
+                                <Link to="/deals" className="nav-link " title="Hot deals" aria-label="Hot deals" >
                                     Hot deals
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-
-                                <Link to="/" className="nav-link " title="Testimonial" aria-label="Testimonial" >
+                                <Link to="/testimonials" className="nav-link " title="Testimonial" aria-label="Testimonial" >
                                     Testimonial
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-
-                                <Link to="/" className="nav-link " title="Contacts" aria-label="Contacts" >
+                                <Link to="/contacts" className="nav-link " title="Contacts" aria-label="Contacts" >
                                     Contacts
                                 </Link>
 
@@ -46,15 +46,15 @@ export default function Layout() {
                         </ul>
 
                         <ul className="navbar-nav ms-auto">
-
                             <li className="nav-item ">
-                                <Link to="/" className="nav-link " title="Contacts" aria-label="Contacts" >
+                                <Link to="/contacts" className="nav-link " title="Contacts" aria-label="Contacts" >
                                     <i className="bi bi-telephone"></i>   +380673678654
                                 </Link>
                             </li>
                         </ul>
                         <div className="navbar-btn ms-3">
-                            <SiteButton buttonType={ButtonTypes.Blur} text="Pick a Tour" />
+                            <SiteButton buttonType={isHome ? ButtonTypes.Blur : ButtonTypes.Black} text="Pick a Tour"/>
+
                         </div>
 
                     </div>
@@ -76,14 +76,14 @@ export default function Layout() {
                 <Link to="/home" className="nav-link " title="Home" aria-label="Home" >
                     <h4 style={{ marginTop: "20px", color: "#CAC8C3" }}>  Home</h4>
                 </Link>
-                <Link to="/" className="nav-link " title="About Us" aria-label="About Us" >
+                <Link to="/about" className="nav-link " title="About Us" aria-label="About Us" >
           
                     <h4   style={{ color: "#CAC8C3" }}>  About Us</h4>
                 </Link>
-                <Link to="/" className="nav-link " title="Hot deals" aria-label="Hot deals" >
+                <Link to="/deals" className="nav-link " title="Hot deals" aria-label="Hot deals" >
                     <h4   style={{ color: "#CAC8C3" }}> Hot deals</h4>
                 </Link>
-                <Link to="/" className="nav-link " title="Testimonial" aria-label="Testimonial" >
+                <Link to="/testimonials" className="nav-link " title="Testimonial" aria-label="Testimonial" >
                     <h4   style={{ color: "#CAC8C3" }}> Testimonial</h4>
                 </Link>
                 

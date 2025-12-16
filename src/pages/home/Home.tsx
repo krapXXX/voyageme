@@ -8,8 +8,45 @@ import './ui/Home.css';
 import type { TestimonialPageSection } from '../../entities/testimonial/model/Testimonial';
 import TestimonialDao from '../../entities/section/api/TestimonialDao';
 import SiteTitle from '../../features/title/SiteTitle';
+import SiteInput from '../../features/input/SiteInput';
 
-
+const faqData = [
+    {
+        question: "How can I book a tour?",
+        answer:
+            "You can book a tour by contacting our team or submitting a request through our website. We’ll help you choose the best offer and guide you through each step of the booking process."
+    },
+    {
+        question: "Do I need to pay the full amount upfront?",
+        answer:
+            "Not always. Many tours allow partial prepayment, with the remaining balance due closer to the departure date. Details depend on the tour operator and specific offer."
+    },
+    {
+        question: "What if I need to cancel my trip?",
+        answer:
+            "Cancellation policies vary depending on the tour and the provider. Some bookings are fully refundable within a time window, while others may include cancellation fees."
+    },
+    {
+        question: "Are flights included in the package?",
+        answer:
+            "Some packages include flights, while others offer them as an optional add-on. Each tour description lists whether airfare is included."
+    },
+    {
+        question: "Can I customize my trip?",
+        answer:
+            "Yes! We can help you adjust travel dates, hotel preferences, excursion options, and more depending on availability."
+    },
+    {
+        question: "Is travel insurance included?",
+        answer:
+            "Travel insurance is usually optional. We recommend adding it to protect your trip from unexpected changes or emergencies."
+    },
+    {
+        question: "When is the best time to book a tour?",
+        answer:
+            "For the best prices, book 1–3 months in advance. Last-minute deals may also appear, but availability can be limited."
+    }
+];
 const steps = [
     { number: "01", text: "Choose a tour" },
     { number: "02", text: "Get a free consultation" },
@@ -21,7 +58,7 @@ function Step({ step }: { step: { number: string; text: string } }) {
     return (
         <div className="step-wrapper">
             <div className="step-circle">{step.number}</div>
-            <h4 style={{ marginTop: "10px" }}>{step.text}</h4>
+            <h4 className="step-text">{step.text}</h4>
         </div>
     );
 }
@@ -91,7 +128,7 @@ export default function Home() {
                 <h1 style={{ color: "white" }}>Your Next Adventure Starts Here</h1>
                 <h4 style={{ marginTop: "30px", color: "#A8A8A8" }}>Dreaming of sun-kissed beaches, historic cities, or mountain escapes? Don't wait — the world is ready for you!</h4>
                 <div style={{ marginTop: "30px" }}>
-                    <SiteButton buttonType={ButtonTypes.Blur} text="Explore Hot Deals" padding="16px 70px" />
+                    <SiteButton buttonType={ButtonTypes.Blur} text="Explore Hot Deals" width={"290px"} />
                 </div>
             </div>
         </div>
@@ -183,13 +220,13 @@ export default function Home() {
 
         </div>
         {/* and Get 15% Off! */}
-        <div className="block" style={{ backgroundImage: 'url("/img/hero2.jpg")', backgroundSize: "cover", height: "600px", marginRight: "0", marginLeft: "0" }}>
+        <div className="block" style={{ backgroundImage: 'url("/img/hero2.jpg")', backgroundSize: "cover", width: "100%", height: "600px", marginRight: "0", marginLeft: "0" }}>
             <div className="column-container" style={{ width: "100%", paddingTop: "160px", justifyContent: "center", alignItems: "center" }}>
                 <h3 style={{ color: '#CAC8C3' }}>Plan Early, Travel Smart: </h3>
                 <h2 style={{ color: '#F5F5F2' }}>Book Your Trip 2 Months in Advance </h2>
                 <h2 style={{ color: '#F5F5F2', fontWeight: '700', marginBottom: "60px" }}>and Get 15% Off!</h2>
 
-                <SiteButton buttonType={ButtonTypes.White} text="Order Now" icon={<img src="/img/arrow.png" />} padding="16px 120px" />
+                <SiteButton buttonType={ButtonTypes.White} text="Order Now" icon={<img src="/img/arrow.png" />} width={"390px"} />
 
             </div>
         </div>
@@ -286,5 +323,72 @@ export default function Home() {
 
         </div>
 
+        <div className="block" style={{ marginLeft: "320px", marginRight: "320px" }}>
+            <SiteTitle title="You Might Be Interested In" subtitle="OUR FAQ" align="center" />
+            <div style={{ marginTop: "50px" }}>
+                {faqData.map((faq, index) => {
+                    const collapseId = `faq-collapse-${index}`; // unique ID
+
+                    return (
+                        <div key={index} style={{ marginBottom: "20px" }}>
+                            <div className="d-flex align-items-center justify-content-between">
+                                <h3>{faq.question}</h3>
+
+                                <img
+                                    src="/img/toggle.png"
+                                    className="btn-tgl rotatable collapsed"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#${collapseId}`}
+                                    style={{ cursor: "pointer" }}
+                                />
+                            </div>
+                            <div className="collapse" id={collapseId}>
+                                <div className="card-tgl card-body">
+                                    <h4>{faq.answer}</h4>
+                                </div>
+                            </div>
+                            <img src="/img/Line.png" style={{ width: "100%" }} />
+
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+
+        <div className="block ">
+            <div className="grid3 ">
+                <SiteBlock height={"650px"} backgroundImage={"/img/request.png"}>
+                    <div className="gradient request-block">
+                        <div className="col-container " style={{ width: "60%" }}>
+                            <h3 style={{ color: "#F5F5F2" }}>Let Us Do The Planning – You Do The Packing!</h3>
+                            <h4 style={{ color: "#F5F5F2", marginTop: "20px" }}>Submit a request and get your perfect vacation, effortlessly.</h4>
+                            <div >
+                                <SiteInput text="Name" />
+                                <SiteInput text="Phone Number" />
+                            </div>
+                            <div style={{ marginTop: "50px" }}>
+                                <SiteButton buttonType={ButtonTypes.Blur} text="Leave a Request" width={"100%"} />
+                            </div>
+                        </div>
+                    </div>
+                </SiteBlock>
+                <div>
+                    <h3>Our Location</h3>
+                    <h4 style ={{paddingTop:"20px"}}><img src = "/img/location.png" style ={{marginRight:"10px"}} className = "icon"/>17A Horizon Street, Office 304, Kyiv, 01001, Ukraine</h4>
+                    <a href="https://www.google.com.ua/maps/place/%D0%9A%D0%B8%D1%97%D0%B2,+02000/@50.453877,30.4509415,11.41z/data=!4m6!3m5!1s0x40d4cf4ee15a4505:0x764931d2170146fe!8m2!3d50.4503596!4d30.5245025!16zL20vMDJzbjM0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" >
+    <img src="/img/Figmap.png" style={{ paddingTop: "30px", width: "100%", cursor:"pointer" }} />
+</a>
+
+                    <div className = "socials row-container">
+                    <h3 >Social Media </h3>
+                    <div className = "row-container"> 
+                    <img src = "/img/Facebook.png"className = "icon" style ={{marginRight:"30px"}} />
+                    <img src = "/img/Instagram.png" className = "icon"style ={{marginRight:"30px"}} />
+                    <img src = "/img/Linkedin.png" className = "icon"/>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </>
 }
