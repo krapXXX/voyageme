@@ -7,9 +7,22 @@ import Product from '../../pages/product/Product';
 import Testimonials from '../../pages/testimonials/Testimonials';
 import Contacts from '../../pages/contacts/Contacts';
 import Liked from '../../pages/liked/Liked';
+import { useEffect, useState } from 'react';
+import type ToastData from '../../features/app_context/ToastData';
+import { AppContext } from '../../features/app_context/AppContext';
 
 export default function App() {
-  return <>
+   const [toastQueue, setToastQueue] = useState<ToastData[]>([]);
+
+    const showToast = (data: ToastData) => {
+        setToastQueue(prev => [...prev, data]);
+
+        setTimeout(() => {
+            setToastQueue(prev => prev.slice(1));
+        }, data.timeout ?? 3000);
+    };
+ 
+ return <AppContext.Provider value ={{showToast}}>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />} >
@@ -24,7 +37,13 @@ export default function App() {
 
                 </Route>
             </Routes>
+             <div className="toaster">
+            {toastQueue.map((td,i) => <div key ={i+td.message} className="toast-text">
+                {td.message}
+            </div>)}
+        </div>
         </BrowserRouter>
-        </>
+        
+    </AppContext.Provider>
 }
 

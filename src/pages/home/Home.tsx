@@ -219,6 +219,7 @@ export default function Home() {
 
 
         </div>
+        
         {/* and Get 15% Off! */}
         <div className="block" style={{ backgroundImage: 'url("/img/hero2.jpg")', backgroundSize: "cover", width: "100%", height: "600px", marginRight: "0", marginLeft: "0" }}>
             <div className="column-container" style={{ width: "100%", paddingTop: "160px", justifyContent: "center", alignItems: "center" }}>

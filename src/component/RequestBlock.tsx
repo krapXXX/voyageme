@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SiteBlock from "../features/block/SiteBlock";
 import SiteInput from "../features/input/SiteInput";
 import SiteButton from "../features/buttons/SiteButton";
 import ButtonTypes from "../features/buttons/types/ButtonTypes";
 import "../app/ui/App.css"
 import"./ui/RequestBlock.css"
+import { AppContext } from "../features/app_context/AppContext";
 
 
 export default function RequestBlock() {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [error, setError] = useState("");
+    const {showToast}=useContext(AppContext);
 
     function handleSubmit() {
         if (name.length < 3) {
@@ -23,7 +25,7 @@ export default function RequestBlock() {
         }
 
         setError("");
-        alert("Form submitted!");
+        showToast({ message: "Form submitted!" });
     }
 
     return (
