@@ -74,6 +74,17 @@ color:white;
     gap:5em;
     padding:3em 7em 2em 7em;
 }
+@media (max-width: 1250px) {
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5em;
+        padding: 3em 2em;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+    }
+}
 .footer-col
 {
     display: flex;

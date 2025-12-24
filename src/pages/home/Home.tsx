@@ -90,7 +90,7 @@ function TestimonialCard({ item }: { item: TestimonialPageSection }) {
                     </div>
                 </div>
 
-                <div style={{ marginTop: "30px" }}>
+                <div className="testimonial-message">
                     <h4>{item.message}</h4>
                 </div>
 
@@ -104,7 +104,7 @@ export default function Home() {
     const [sections, setSections] = useState<ProductPageSection[]>([]);
     const [galleryItems, setGalleryItems] = useState<ProductPageSection[]>([]);
     const [testimonialItems, setTestimonialItems] = useState<TestimonialPageSection[]>([]);
-   
+
 
     useEffect(() => {
         SectionDao.getSections().then(data => {
@@ -136,9 +136,12 @@ export default function Home() {
         {/* Discover World With Us */}
         <div className="block">
 
-            <div className="grid1">
+            <div className="four-grid">
 
-                <SiteTitle title="Discover World With Us" subtitle="OUR BENEFITS" />
+                <div className="four-into">
+                    <SiteTitle title="Discover World With Us" subtitle="OUR BENEFITS" />
+                    <div></div>
+                </div>
 
                 <div className="column-container" >
                     <SiteBlock height='300px'>
@@ -190,7 +193,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="grid1" style={{ marginTop: "30px" }}>
+            <div className="deals" style={{ marginTop: "30px" }}>
 
                 {sections
                     .slice()
@@ -219,7 +222,7 @@ export default function Home() {
 
 
         </div>
-        
+
         {/* and Get 15% Off! */}
         <div className="block" style={{ backgroundImage: 'url("/img/hero2.jpg")', backgroundSize: "cover", width: "100%", height: "600px", marginRight: "0", marginLeft: "0" }}>
             <div className="column-container" style={{ width: "100%", paddingTop: "160px", justifyContent: "center", alignItems: "center" }}>
@@ -262,14 +265,21 @@ export default function Home() {
 
                 <div className="steps-row">
                     {steps.map((step, index) => (
-                        <>
+                        <div className="step-item" key={step.number}>
                             <Step step={step} />
-                            {index !== steps.length - 1 && <img className="step-arrow" src="/img/Arrow_long.png" />}
-                        </>
-                    ))}
 
+                            {index !== steps.length - 1 && (
+                                <img
+                                    className="step-arrow"
+                                    src="/img/Arrow_long.png"
+                                    alt="arrow"
+                                />
+                            )}
+                        </div>
+                    ))}
                 </div>
             </div>
+
 
         </div>
 
@@ -279,11 +289,9 @@ export default function Home() {
             <div className="column-container">
 
                 <SiteTitle title="Postcards from Paradise" subtitle="our gallery" />
-
-                <div className="grid2">
-                    <div className="column-container">
-
-                        <div className="grid3">
+                <div className="postcards gallery-grid">
+                    <div className="column-container gallery-left">
+                        <div className=" gallery-top">
                             {galleryItems.slice(0, 2).map(item => (
                                 <GalleryItem key={item.slug} item={item} height="340px" />
                             ))}
@@ -299,32 +307,47 @@ export default function Home() {
                     )}
                 </div>
 
+
+
+
             </div>
         </div>
 
         {/* Read real stories of our clients */}
         <div className="block">
-            <div className="grid1">
-                <SiteTitle to="/testimonials" title="Read real stories of our clients" subtitle="OUR TESTIMONIAL" />
 
+            <div className="four-grid">
 
-                {testimonialItems.slice(0, 2).map((item, i) => (
-                    <TestimonialCard key={i} item={item} />
-                ))}
-                <div style={{ marginTop: "270px" }} >
-                    <SiteButton to="/testimonials" buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
+                <div className="four-intro">
+                    <SiteTitle to="/testimonials"
+                        title="Read real stories of our clients"
+                        subtitle="OUR TESTIMONIAL" />
+                    <SiteButton to="/testimonials"
+                        buttonType={ButtonTypes.Black}
+                        text="Learn More "
+                        icon={<img src="/img/arrow.png" />}
+                    />
                 </div>
 
-                {testimonialItems.slice(2, 4).map((item, i) => (
-                    <TestimonialCard key={i} item={item} />
-                ))}
+                <div className="column-container" >
+                    {testimonialItems.slice(0, 2).map((item, i) => (
+                        <TestimonialCard key={i} item={item} />
+                    ))}
+
+                </div>
+
+                <div className="column-container" >
+                    {testimonialItems.slice(2, 4).map((item, i) => (
+                        <TestimonialCard key={i} item={item} />
+                    ))}
+
+                </div>
 
             </div>
-
-
         </div>
 
-        <div className="block" style={{ marginLeft: "320px", marginRight: "320px" }}>
+
+        <div className="block" >
             <SiteTitle title="You Might Be Interested In" subtitle="OUR FAQ" align="center" />
             <div style={{ marginTop: "50px" }}>
                 {faqData.map((faq, index) => {
@@ -355,7 +378,7 @@ export default function Home() {
                 })}
             </div>
         </div>
-<div id ="book-section"></div>
-       
+        <div id="book-section"></div>
+
     </>
 }
