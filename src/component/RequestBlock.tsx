@@ -32,10 +32,9 @@ export default function RequestBlock() {
         <div className="block" id="book-section">
             <div className="grid3">
 
-                {/* LEFT SIDE — IMAGE + FORM */}
                 <SiteBlock height="650px" backgroundImage="/img/request.png">
                     <div className="gradient request-block">
-                        <div className="col-container" style={{ width: "60%" }}>
+                        <div className="col-container" style={{ width: "70%" }}>
                             
                             <h3 style={{ color: "#F5F5F2" }}>
                                 Let Us Do The Planning – You Do The Packing!
@@ -69,7 +68,9 @@ export default function RequestBlock() {
                 </SiteBlock>
 
                 {/* RIGHT SIDE — LOCATION + SOCIALS */}
-                <div className="request-location">
+
+    <SiteBlock height = "650px" >
+    <div className="request-location">
                     <h3>Our Location</h3>
 
                     <h4 style={{ paddingTop: "20px" }}>
@@ -99,7 +100,10 @@ export default function RequestBlock() {
                     </div>
                 </div>
 
+    </SiteBlock>      
             </div>
-        </div>
+
+            </div>
+
     );
 }

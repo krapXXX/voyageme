@@ -11,7 +11,7 @@ export default function Layout() {
     const isRequest = location.pathname ==="/home" ||location.pathname ==="/about"||location.pathname ==="/deals"
     return <>
         <header className={isHome ? "header-white" : "header-black"}>
-            <nav className="navbar navbar-expand-lg ">
+            <nav className="navbar navbar-expand-xl ">
                 <div className="container-fluid">
                     <Link to="/home" className="navbar-brand" title="Home Page" aria-label="Home Page">
                         <img src="/img/Logo.png" alt="Logo" width="140" height="33" />
@@ -50,7 +50,7 @@ export default function Layout() {
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item ">
                                 <Link to="/contacts" className="nav-link " title="Contacts" aria-label="Contacts" >
-                                    <i className="bi bi-telephone"></i>   +380673678654
+                                    <i className="bi bi-heart"></i>  
                                 </Link>
                             </li>
                         </ul>
@@ -63,13 +63,14 @@ export default function Layout() {
                 </div>
             </nav>
         </header >
+        
         <main ><Outlet /></main>
 
          {isRequest && ( <RequestBlock />)}
         <footer>
             <div className = "footer">
             <div className="footer-col">
-                <img src="/img/Logo.png" alt="Logo" width="140" height="33" />
+                <img src="/img/Logo.png" alt="Logo" width="205" height="auto" />
                 <h4 style={{ marginTop: "30px", color: "#CAC8C3" }}>We create unforgettable travel
                     experiences. From beach escapes to cultural adventures,
                     our team helps you find the perfect trip — with expert

@@ -5,29 +5,9 @@ body{
      font-size: 20px;
      font-weight: 400;
      position: relative;
-}
-h1, h2, h3,h4 {
-    font-family: General Sans Variable, sans-serif;
-    color: #18150E;
-}
-h1{
-    font-size: 64px;
-    font-weight: 600;
+     background-color: #F5F5F5;
 }
 
-h2{
-     font-size: 50px;
-    font-weight: 600;
-}
-
-h3{
-     font-size: 28px;
-    font-weight:500;
-}
-
-h4{
-     font-size: 20px;
-}
 header {
     position: absolute;
     top: 0;
@@ -37,6 +17,7 @@ header {
 }
 .header-white {
     background-color: transparent;
+
 }
 
 .header-white .nav-link {
@@ -45,6 +26,7 @@ header {
 
 .header-black {
     background-color: transparent;
+
 }
 
 .header-black .nav-link {
@@ -72,19 +54,30 @@ color:white;
      display:grid;
     grid-template-columns: 3fr 2fr 3fr;
     gap:5em;
-    padding:3em 7em 2em 7em;
+     margin: 3% 10%;
 }
 @media (max-width: 1250px) {
     .footer {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 2.5em;
         padding: 3em 2em;
           justify-content: center;
           align-items: center;
           text-align: center;
     }
+    .footer>:nth-child(1)
+    {
+        grid-column: 1 / -1; 
+    }
 }
+@media (max-width: 900px) {
+    .footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 .footer-col
 {
     display: flex;
@@ -92,7 +85,7 @@ color:white;
 }
 .container-fluid
 {
-   margin: 1.5em 4em;
+   margin: 1.5em 10%;
    
 }
 

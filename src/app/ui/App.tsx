@@ -13,7 +13,9 @@ import { AppContext } from '../../features/app_context/AppContext';
 
 export default function App() {
    const [toastQueue, setToastQueue] = useState<ToastData[]>([]);
-
+ const [isSmallScreen, setIsSmallScreen] = useState(
+        window.innerWidth <= 900
+    );
     const showToast = (data: ToastData) => {
         setToastQueue(prev => [...prev, data]);
 
@@ -21,8 +23,16 @@ export default function App() {
             setToastQueue(prev => prev.slice(1));
         }, data.timeout ?? 3000);
     };
+     useEffect(() => {
+        const onResize = () => {
+            setIsSmallScreen(window.innerWidth <= 900);
+        };
+
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, []);
  
- return <AppContext.Provider value ={{showToast}}>
+ return <AppContext.Provider value ={{showToast, isSmallScreen }}>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />} >

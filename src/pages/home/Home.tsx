@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import SiteBlock from '../../features/block/SiteBlock';
 import SiteButton from '../../features/buttons/SiteButton';
 import ButtonTypes from '../../features/buttons/types/ButtonTypes';
@@ -8,6 +8,7 @@ import './ui/Home.css';
 import type { TestimonialPageSection } from '../../entities/testimonial/model/Testimonial';
 import TestimonialDao from '../../entities/section/api/TestimonialDao';
 import SiteTitle from '../../features/title/SiteTitle';
+import { AppContext } from '../../features/app_context/AppContext';
 
 const faqData = [
     {
@@ -67,7 +68,7 @@ function GalleryItem({ item, height }: { item: ProductPageSection, height: strin
         <SiteBlock height={height} backgroundImage={item.imageUrl[0]}>
             <div className="gradient">
                 <h3 className="block-text1" style={{ color: "#F5F5F2", paddingRight: "100px" }}>
-                    {item.name}, {item.location}
+                    {item.location}
                 </h3>
                 <img src="/img/pointer.png" className="block-img2" />
             </div>
@@ -104,7 +105,7 @@ export default function Home() {
     const [sections, setSections] = useState<ProductPageSection[]>([]);
     const [galleryItems, setGalleryItems] = useState<ProductPageSection[]>([]);
     const [testimonialItems, setTestimonialItems] = useState<TestimonialPageSection[]>([]);
-
+const { isSmallScreen } = useContext(AppContext);
 
     useEffect(() => {
         SectionDao.getSections().then(data => {
@@ -124,7 +125,7 @@ export default function Home() {
     return <>
         {/* Your Next Adventure Starts Here */}
         <div className="block " style={{ backgroundImage: 'url("/img/hero.png")', backgroundSize: "cover", width: "100%", height: "900px", marginRight: "0", marginLeft: "0", marginTop: "0" }}>
-            <div className="column-container" style={{ width: "50%", marginTop: "280px", position: "absolute", left: "5em", top: "0" }}>
+            <div className="column-container" style={{ width: "50%", marginTop: "280px", position: "absolute", top: "0" ,left:"10%"}}>
                 <h1 style={{ color: "white" }}>Your Next Adventure Starts Here</h1>
                 <h4 style={{ marginTop: "30px", color: "#A8A8A8" }}>Dreaming of sun-kissed beaches, historic cities, or mountain escapes? Don't wait — the world is ready for you!</h4>
                 <div style={{ marginTop: "30px" }}>
@@ -138,9 +139,9 @@ export default function Home() {
 
             <div className="four-grid">
 
-                <div className="four-into">
+                <div className="four-intro">
                     <SiteTitle title="Discover World With Us" subtitle="OUR BENEFITS" />
-                    <div></div>
+                     
                 </div>
 
                 <div className="column-container" >
@@ -188,9 +189,12 @@ export default function Home() {
 
                 <div className="column-container" >
                     <h4 >Don’t miss out on our best last-minute deals — limited spots, unbeatable prices, and unforgettable experiences.</h4>
-                    <div style={{ marginTop: "30px" }}>
+                    {!isSmallScreen && (
+                         <div style={{ marginTop: "30px" }}>
                         <SiteButton to="/deals" buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png" />} />
                     </div>
+                    )}
+                   
                 </div>
             </div>
             <div className="deals" style={{ marginTop: "30px" }}>
@@ -218,6 +222,11 @@ export default function Home() {
                             </div>
                         </SiteBlock>
                     ))}
+                     {isSmallScreen && (
+                         <div style={{ marginTop: "30px" }}>
+                        <SiteButton to="/deals" width ="100%" buttonType={ButtonTypes.Black} text="Learn More " icon={<img src="/img/arrow.png"  />} />
+                    </div>
+                    )}
             </div>
 
 
@@ -225,12 +234,16 @@ export default function Home() {
 
         {/* and Get 15% Off! */}
         <div className="block" style={{ backgroundImage: 'url("/img/hero2.jpg")', backgroundSize: "cover", width: "100%", height: "600px", marginRight: "0", marginLeft: "0" }}>
-            <div className="column-container" style={{ width: "100%", paddingTop: "160px", justifyContent: "center", alignItems: "center" }}>
+            <div className="column-container block-text-center">
                 <h3 style={{ color: '#CAC8C3' }}>Plan Early, Travel Smart: </h3>
                 <h2 style={{ color: '#F5F5F2' }}>Book Your Trip 2 Months in Advance </h2>
                 <h2 style={{ color: '#F5F5F2', fontWeight: '700', marginBottom: "60px" }}>and Get 15% Off!</h2>
-
-                <SiteButton to="#book-section" buttonType={ButtonTypes.White} text="Order Now" icon={<img src="/img/arrow.png" />} width={"390px"} />
+{!isSmallScreen && (
+                <SiteButton to="#book-section" buttonType={ButtonTypes.White} text="Order Now" icon={<img style ={{ filter: "invert(1)"}}src="/img/arrow.png" />} width={"390px"} />
+                    )}
+                    {isSmallScreen && (
+                <SiteButton to="#book-section" buttonType={ButtonTypes.White} text="Order Now" icon={<img src="/img/arrow.png" />} width={"70%"} />
+                    )}
 
             </div>
         </div>
@@ -260,6 +273,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            
             <div className="column-container" style={{ marginTop: "100px" }}>
                 <h2>Only 5 steps to the dream!</h2>
 
@@ -316,39 +330,73 @@ export default function Home() {
         {/* Read real stories of our clients */}
         <div className="block">
 
-            <div className="four-grid">
+           {!isSmallScreen && (
+    <div className="four-grid">
 
-                <div className="four-intro">
-                    <SiteTitle to="/testimonials"
-                        title="Read real stories of our clients"
-                        subtitle="OUR TESTIMONIAL" />
-                    <SiteButton to="/testimonials"
-                        buttonType={ButtonTypes.Black}
-                        text="Learn More "
-                        icon={<img src="/img/arrow.png" />}
-                    />
-                </div>
-
-                <div className="column-container" >
-                    {testimonialItems.slice(0, 2).map((item, i) => (
-                        <TestimonialCard key={i} item={item} />
-                    ))}
-
-                </div>
-
-                <div className="column-container" >
-                    {testimonialItems.slice(2, 4).map((item, i) => (
-                        <TestimonialCard key={i} item={item} />
-                    ))}
-
-                </div>
-
-            </div>
+        <div className="four-intro">
+            <SiteTitle
+                to="/testimonials"
+                title="Read real stories of our clients"
+                subtitle="OUR TESTIMONIAL"
+            />
+            <SiteButton
+                to="/testimonials"
+                buttonType={ButtonTypes.Black}
+                text="Learn More"
+                icon={<img src="/img/arrow.png" />}
+            />
         </div>
+
+        <div className="column-container">
+            {testimonialItems.slice(0, 2).map((item, i) => (
+                <TestimonialCard key={i} item={item} />
+            ))}
+        </div>
+
+        <div className="column-container">
+            {testimonialItems.slice(2, 4).map((item, i) => (
+                <TestimonialCard key={i} item={item} />
+            ))}
+        </div>
+
+    </div>
+)}
+
+
+                {isSmallScreen && (
+    <div className="mobile-testimonials">
+
+        <SiteTitle
+            to="/testimonials"
+            title="Read real stories of our clients"
+            subtitle="OUR TESTIMONIAL"
+        />
+
+        <div className="mobile-scroll">
+            {testimonialItems.slice(0, 4).map((item, i) => (
+                <div className="mobile-slide" key={i}>
+                    <TestimonialCard item={item} />
+                </div>
+            ))}
+        </div>
+
+        <SiteButton
+            to="/testimonials"
+            buttonType={ButtonTypes.Black}
+            text="Learn More"
+            icon={<img src="/img/arrow.png" />}
+        />
+    </div>
+)}
+
+            
+            </div>
 
 
         <div className="block" >
+            <div style ={{alignItems:"center"}} >
             <SiteTitle title="You Might Be Interested In" subtitle="OUR FAQ" align="center" />
+          </div>
             <div style={{ marginTop: "50px" }}>
                 {faqData.map((faq, index) => {
                     const collapseId = `faq-collapse-${index}`; // unique ID

@@ -12,12 +12,14 @@
     bottom: 0;
 
     display: flex;
-    justify-content: space-between;  
     align-items: center;
+    justify-content: space-between;
+    width:85%;
+margin-bottom: 40px;
 
-    width: 49%;                    
 }
 .request-location {
+    margin:40px;
     display: flex;
     flex-direction: column;
 }
