@@ -131,6 +131,11 @@ h4{
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     pointer-events: auto;
 }
+.grid3eq {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 @media (max-width: 1200px) {
     h1 {
         font-size: 48px;
@@ -152,4 +157,17 @@ h4{
 
 
     }
+     .grid3eq {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid3eq> :nth-child(3) {
+        grid-column: 1 / -1;
+    }
+}
+@media (max-width: 900px){
+     .grid3eq {
+        grid-template-columns: 1fr;
+    }
+
 }

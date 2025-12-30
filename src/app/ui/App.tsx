@@ -15,7 +15,8 @@ export default function App() {
    const [toastQueue, setToastQueue] = useState<ToastData[]>([]);
  const [isSmallScreen, setIsSmallScreen] = useState(
         window.innerWidth <= 900
-    );
+    ); 
+   
     const showToast = (data: ToastData) => {
         setToastQueue(prev => [...prev, data]);
 

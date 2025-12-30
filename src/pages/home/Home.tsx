@@ -242,7 +242,7 @@ const { isSmallScreen } = useContext(AppContext);
                 <SiteButton to="#book-section" buttonType={ButtonTypes.White} text="Order Now" icon={<img style ={{ filter: "invert(1)"}}src="/img/arrow.png" />} width={"390px"} />
                     )}
                     {isSmallScreen && (
-                <SiteButton to="#book-section" buttonType={ButtonTypes.White} text="Order Now" icon={<img src="/img/arrow.png" />} width={"70%"} />
+                <SiteButton to="#book-section" buttonType={ButtonTypes.White} text="Order Now" icon={<img style ={{ filter: "invert(1)"}} src="/img/arrow.png" />}width={"390px"}/>
                     )}
 
             </div>
@@ -394,9 +394,7 @@ const { isSmallScreen } = useContext(AppContext);
 
 
         <div className="block" >
-            <div style ={{alignItems:"center"}} >
-            <SiteTitle title="You Might Be Interested In" subtitle="OUR FAQ" align="center" />
-          </div>
+            <SiteTitle align = "center" title="You Might Be Interested In" subtitle="OUR FAQ"  />
             <div style={{ marginTop: "50px" }}>
                 {faqData.map((faq, index) => {
                     const collapseId = `faq-collapse-${index}`; // unique ID
