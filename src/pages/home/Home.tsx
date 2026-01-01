@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import SiteBlock from '../../features/block/SiteBlock';
 import SiteButton from '../../features/buttons/SiteButton';
 import ButtonTypes from '../../features/buttons/types/ButtonTypes';
-import SectionDao from '../../entities/section/api/HomeDao';
+import ProductDao from '../../entities/section/api/ProductDao';
 import type { ProductPageSection } from '../../entities/product/model/ProductType';
 import './ui/Home.css';
 import type { TestimonialPageSection } from '../../entities/testimonial/model/Testimonial';
@@ -102,14 +102,14 @@ function TestimonialCard({ item }: { item: TestimonialPageSection }) {
 
 
 export default function Home() {
-    const [sections, setSections] = useState<ProductPageSection[]>([]);
+    const [products, setProducts] = useState<ProductPageSection[]>([]);
     const [galleryItems, setGalleryItems] = useState<ProductPageSection[]>([]);
     const [testimonialItems, setTestimonialItems] = useState<TestimonialPageSection[]>([]);
 const { isSmallScreen } = useContext(AppContext);
 
     useEffect(() => {
-        SectionDao.getSections().then(data => {
-            setSections(data);
+        ProductDao.getProducts().then(data => {
+            setProducts(data);
 
             const shuffledGallery = [...data].sort(() => Math.random() - 0.5);
             setGalleryItems(shuffledGallery.slice(0, 4));
@@ -199,7 +199,7 @@ const { isSmallScreen } = useContext(AppContext);
             </div>
             <div className="deals" style={{ marginTop: "30px" }}>
 
-                {sections
+                {products
                     .slice()
                     .sort(() => Math.random() - 0.5)
                     .slice(0, 3)

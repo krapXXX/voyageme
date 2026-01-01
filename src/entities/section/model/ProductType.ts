@@ -1,7 +1,7 @@
 import type { ProductPageSection } from "../../product/model/ProductType";
 
-type SectionType = {
+type ProductType = {
 products:Array<ProductPageSection>
 }
 
-export type{SectionType};
+export type{ProductType};

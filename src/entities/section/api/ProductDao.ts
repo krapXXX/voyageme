@@ -1,17 +1,20 @@
 import type { ProductPageSection } from "../../product/model/ProductType";
-import type { SectionType } from "../model/HomeType";
+import type { ProductType } from "../model/ProductType";
 
-export default class SectionDao {
+export default class ProductDao {
     static cacheSections: Array<ProductPageSection> | undefined;
 
-    static getSections() {
+    static getProducts() {
         return new Promise<Array<ProductPageSection>>((resolve, _) => {
-            if (typeof SectionDao.cacheSections != 'undefined') {
-                resolve(SectionDao.cacheSections);
+            if (typeof ProductDao
+            .cacheSections != 'undefined') {
+                resolve(ProductDao
+                .cacheSections);
             }
             else {
                 setTimeout(() => {
-                    SectionDao.cacheSections =
+                    ProductDao
+                .cacheSections =
                         [
                             {
                                 slug: "tropical-escape",
@@ -34,7 +37,8 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Tropical.png",
-                                ]
+                                ],
+                                rating: 4.8
                             },
 
                             {
@@ -58,8 +62,8 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Diving.png",
-
-                                ]
+                                ],
+                                rating: 4.6
                             },
 
                             {
@@ -83,7 +87,8 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Balkan.png",
-                                ]
+                                ],
+                                rating: 4.7
                             },
 
                             {
@@ -107,7 +112,8 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Paris.jpg",
-                                ]
+                                ],
+                                rating: 4.9
                             },
 
                             {
@@ -131,7 +137,8 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Turkey.jpg",
-                                ]
+                                ],
+                                rating: 4.5
                             },
 
                             {
@@ -155,7 +162,8 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Aegean.jpg",
-                                ]
+                                ],
+                                rating: 4.4
                             },
 
                             {
@@ -179,8 +187,10 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Egypt.jpg",
-                                ]
+                                ],
+                                rating: 4.6
                             },
+
                             {
                                 slug: "balloons-over-cappadocia",
                                 name: "Balloons Over Cappadocia",
@@ -202,8 +212,10 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Cappadocia.png",
-                                ]
+                                ],
+                                rating: 4.9
                             },
+
                             {
                                 slug: "canyon-escape-oglesby",
                                 name: "Canyon Escape Oglesby",
@@ -225,8 +237,10 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Oglesby.png",
-                                ]
+                                ],
+                                rating: 4.3
                             },
+
                             {
                                 slug: "golden-dunes-rub-al-khali",
                                 name: "Golden Dunes of Rub' al Khali",
@@ -248,8 +262,10 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Khali.png",
-                                ]
+                                ],
+                                rating: 4.7
                             },
+
                             {
                                 slug: "emerald-waters-palawan",
                                 name: "Emerald Waters of Palawan",
@@ -271,19 +287,15 @@ export default class SectionDao {
                                 ],
                                 imageUrl: [
                                     "/img/Palawan.png",
-                                ]
+                                ],
+                                rating: 4.9
                             }
-
-
-
                         ];
 
-
-                    resolve(SectionDao.cacheSections);
+                    resolve(ProductDao
+                    .cacheSections);
                 }, 300)
             }
-        }
-        )
-
+        })
     }
 }

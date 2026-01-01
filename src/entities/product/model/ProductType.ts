@@ -4,6 +4,7 @@ type ProductPageSection = {
     price: string;
    date: string;
    duration: string;
+   rating:number;
    description: string;
    descriptionFull: string;
    tourists: string;

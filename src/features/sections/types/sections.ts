@@ -1,9 +1,9 @@
 type HomePageSection = {
-    slug: string;
+    slug:string|undefined
     name: string;
     description: string;
     price: string;
-    tiurists: string;
+    tourists: string;
     imageUrl: string;
 };
 export type {HomePageSection};
