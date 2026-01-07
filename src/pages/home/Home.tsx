@@ -65,7 +65,7 @@ function Step({ step }: { step: { number: string; text: string } }) {
 
 function GalleryItem({ item, height }: { item: ProductPageSection, height: string }) {
     return (
-        <SiteBlock height={height} backgroundImage={item.imageUrl[0]}>
+        <SiteBlock  to={`/product/${item.slug}`} height={height} backgroundImage={item.imageUrl[0]}>
             <div className="gradient">
                 <h3 className="block-text1" style={{ color: "#F5F5F2", paddingRight: "100px" }}>
                     {item.location}
@@ -205,6 +205,7 @@ const { isSmallScreen } = useContext(AppContext);
                     .slice(0, 3)
                     .map(section => (
                         <SiteBlock
+                         to={`/product/${section.slug}`}
                             key={section.slug}
                             height="450px"
                             backgroundImage={section.imageUrl[0]}
@@ -253,7 +254,7 @@ const { isSmallScreen } = useContext(AppContext);
             <div className="grid2">
 
                 <div className="column-container" >
-                    <SiteTitle to="/us" title="Dream. Travel. Live." subtitle="ABOUT us" />
+                    <SiteTitle to="/abous" title="Dream. Travel. Live." subtitle="ABOUT us" />
 
                     <div style={{ marginTop: "110px" }}>
                         <SiteBlock height='198px' width='392px' backgroundImage="/img/dream_travel_live.jpg" />
@@ -339,12 +340,12 @@ const { isSmallScreen } = useContext(AppContext);
                 title="Read real stories of our clients"
                 subtitle="OUR TESTIMONIAL"
             />
-            <SiteButton
+            {/* <SiteButton
                 to="/testimonials"
                 buttonType={ButtonTypes.Black}
                 text="Learn More"
                 icon={<img src="/img/arrow.png" />}
-            />
+            /> */}
         </div>
 
         <div className="column-container">
@@ -380,18 +381,15 @@ const { isSmallScreen } = useContext(AppContext);
             ))}
         </div>
 
-        <SiteButton
+        {/* <SiteButton
             to="/testimonials"
             buttonType={ButtonTypes.Black}
             text="Learn More"
             icon={<img src="/img/arrow.png" />}
-        />
+        /> */}
     </div>
 )}
-
-            
             </div>
-
 
         <div className="block" >
             <SiteTitle align = "center" title="You Might Be Interested In" subtitle="OUR FAQ"  />

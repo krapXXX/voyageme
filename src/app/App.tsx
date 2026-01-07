@@ -1,15 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from '../../layout/Layout';
-import Home from '../../pages/home/Home';
-import Deals from '../../pages/deals/Deals';
-import About from '../../pages/about/About';
-import Product from '../../pages/product/Product';
-import Testimonials from '../../pages/testimonials/Testimonials';
-import Contacts from '../../pages/contacts/Contacts';
-import Liked from '../../pages/liked/Liked';
+import Layout from '../layout/Layout';
+import Home from '../pages/home/Home';
+import Deals from '../pages/deals/Deals';
+import About from '../pages/about/About';
+import Product from '../pages/product/Product';
+import Testimonials from '../pages/testimonials/Testimonials';
+import Contacts from '../pages/contacts/Contacts';
+import Liked from '../pages/liked/Liked';
 import { useEffect, useState } from 'react';
-import type ToastData from '../../features/app_context/ToastData';
-import { AppContext } from '../../features/app_context/AppContext';
+import type ToastData from '../features/app_context/ToastData';
+import { AppContext } from '../features/app_context/AppContext';
+import "./ui/App.css";
+import Error from '../pages/error/Error';
 
 export default function App() {
    const [toastQueue, setToastQueue] = useState<ToastData[]>([]);
@@ -39,12 +41,14 @@ export default function App() {
                 <Route path="/" element={<Layout />} >
                     <Route index element={<Home />} />
                     <Route path='home' element={<Home />} />
+                    <Route path='error' element={<Error />} />
                     <Route path='about' element={<About/>} />
                     <Route path='deals' element={<Deals />} />
-                    <Route path='product' element={<Product />} />
-                    <Route path='testimonials' element={<Testimonials />} />
-                    <Route path='contacts' element={<Contacts />} />
-                    <Route path='liked' element={<Liked />} />
+                    <Route path="/product/:slug" element={<Product />} />
+                    {/* <Route path='testimonials' element={<Testimonials />} />
+                    <Route path='contacts' element={<Contacts />} /> */}
+                    <Route path='like' element={<Liked />} />
+                    <Route path='profile' element={<Liked />} />
 
                 </Route>
             </Routes>

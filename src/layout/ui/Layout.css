@@ -23,6 +23,9 @@ header {
 .header-white .nav-link {
       color: #F5F5F2 !important;
 }
+.header-white img{
+     filter: brightness(0) invert(1);
+}
 
 .header-black {
     background-color: transparent;
@@ -36,6 +39,7 @@ header {
 .header-black .navbar-brand img {
     filter: brightness(0) invert(0);
 }
+
 
 
 footer{
@@ -85,7 +89,7 @@ color:white;
 }
 .container-fluid
 {
-   margin: 1.5em 10%;
+   margin: 1.5em 8%;
    
 }
 

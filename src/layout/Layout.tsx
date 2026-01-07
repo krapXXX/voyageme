@@ -8,7 +8,7 @@ export default function Layout() {
  
      const location = useLocation();
     const isHome = location.pathname === "/home" || location.pathname === "/";
-    const isRequest = location.pathname ==="/home" ||location.pathname ==="/about"||location.pathname ==="/deals"
+    const isRequest = location.pathname === "/home" || location.pathname === "/about" || location.pathname === "/deals" ||  location.pathname.startsWith("/product/");;
     return <>
         <header className={isHome ? "header-white" : "header-black"}>
             <nav className="navbar navbar-expand-xl ">
@@ -33,27 +33,39 @@ export default function Layout() {
                                 </Link>
                             </li>
 
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link to="/testimonials" className="nav-link " title="Testimonial" aria-label="Testimonial" >
                                     Testimonial
                                 </Link>
-                            </li>
+                            </li> */}
 
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link to="/contacts" className="nav-link " title="Contacts" aria-label="Contacts" >
                                     Contacts
                                 </Link>
 
-                            </li>
+                            </li> */}
                         </ul>
+                      <ul className="navbar-nav ms-auto d-flex align-items-center gap-3">
+    <li className="nav-item">
+        <Link to="/like" className="nav-link" aria-label="Liked">
+            <img src="/img/like.png" alt="Like" />
+        </Link>
+    </li>
 
-                        <ul className="navbar-nav ms-auto">
-                            <li className="nav-item ">
-                                <Link to="/contacts" className="nav-link " title="Contacts" aria-label="Contacts" >
-                                    <i className="bi bi-heart"></i>  
-                                </Link>
-                            </li>
-                        </ul>
+    <li className="nav-item">
+        <Link to="/profile" className="nav-link" aria-label="Profile">
+            <img src="/img/profile.png" alt="Profile" />
+        </Link>
+    </li>
+
+    {/* <li className="nav-item">
+        <Link to="/contacts" className="nav-link" aria-label="Contacts">
+            <img src="/img/phone.png" alt="Phone" />
+        </Link>
+    </li> */}
+</ul>
+
                         <div className="navbar-btn ms-3">
                             <SiteButton  to="/deals" buttonType={isHome ? ButtonTypes.Blur : ButtonTypes.Black} text="Pick a Tour"/>
 
@@ -66,7 +78,7 @@ export default function Layout() {
         
         <main ><Outlet /></main>
 
-         {isRequest && ( <RequestBlock />)}
+        {isRequest && <RequestBlock />}
         <footer>
             <div className = "footer">
             <div className="footer-col">
@@ -89,9 +101,9 @@ export default function Layout() {
                 <Link to="/deals" className="nav-link " title="Hot deals" aria-label="Hot deals" >
                     <h4   style={{ color: "#CAC8C3" }}> Hot deals</h4>
                 </Link>
-                <Link to="/testimonials" className="nav-link " title="Testimonial" aria-label="Testimonial" >
+                {/* <Link to="/testimonials" className="nav-link " title="Testimonial" aria-label="Testimonial" >
                     <h4   style={{ color: "#CAC8C3" }}> Testimonial</h4>
-                </Link>
+                </Link> */}
                 
             </div>
             <div className="footer-col">

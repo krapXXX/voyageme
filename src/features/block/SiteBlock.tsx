@@ -1,17 +1,35 @@
-import './ui/SiteBlock.css';
+import { Link } from "react-router-dom";
+import "./ui/SiteBlock.css";
 
 export default function SiteBlock({
     width,
     height,
     children,
+    to,
     backgroundImage
 }: {
     width?: string;
     height?: string;
     children?: React.ReactNode;
+    to?: string;
     backgroundImage?: string;
 }) {
-    return (
+
+    function handleScroll(e: React.MouseEvent) {
+        if (!to || !to.startsWith("#")) return;
+
+        e.preventDefault();
+
+        const id = to.substring(1);
+        const el = document.getElementById(id);
+
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
+    // This is the actual block content
+    const content = (
         <div
             className="site-block"
             style={{
@@ -26,4 +44,25 @@ export default function SiteBlock({
             {children}
         </div>
     );
+
+    // CASE 1: smooth scroll anchor
+    if (to && to.startsWith("#")) {
+        return (
+            <a href={to} onClick={handleScroll}>
+                {content}
+            </a>
+        );
+    }
+
+    // CASE 2: route navigation
+    if (to) {
+        return (
+            <Link to={to}>
+                {content}
+            </Link>
+        );
+    }
+
+    // CASE 3: normal block
+    return content;
 }

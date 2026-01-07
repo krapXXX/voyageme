@@ -27,3 +27,14 @@
     -webkit-mask-size: cover;
     -webkit-mask-repeat: no-repeat;
 }
+.text-ellipsis {
+    display: -webkit-box;              /* Enables flexbox-like layout for text */
+    -webkit-box-orient: vertical;      /* Sets vertical orientation */
+    -webkit-line-clamp: 1;             /* Limit to 2 lines */
+    overflow: hidden;                  /* Hide overflowing text */
+    text-overflow: ellipsis;           /* Add "..." at the end */
+    line-height: 24px;                 /* Adjust line height */
+      mask-image: linear-gradient(to right, black 80%, transparent);
+      cursor: pointer;
+}
+

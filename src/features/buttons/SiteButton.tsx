@@ -6,13 +6,17 @@ export default function SiteButton({
     buttonType,
     text,
     width = "206px",
+    height,
+ radius="100px",
     icon,
     to,
     onClick
 }: {
     buttonType: ButtonTypes;
-    text: string;
+    text?: string;
     width?: string;
+    height?: string;
+    radius?:string;
     icon?: React.ReactNode;
     to?: string;
     onClick?: () => void;
@@ -40,7 +44,7 @@ export default function SiteButton({
     const content = (
         <div
             className={"site-button " + extraClass}
-            style={{ width }}
+            style={{ width,height, borderRadius: radius  }}
             onClick={onClick}
         >
             {text}

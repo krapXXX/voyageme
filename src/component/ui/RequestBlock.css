@@ -6,20 +6,23 @@
     justify-content: center;
      text-align: center;
 }
-
 .socials {
     position: absolute;
     bottom: 0;
+    left: 0;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width:85%;
-margin-bottom: 40px;
 
+    width: 95%;
+    margin-bottom: 80px;
 }
+
 .request-location {
-    margin:40px;
+    margin: 40px;
     display: flex;
     flex-direction: column;
+    position: relative;   /* ✅ THIS IS REQUIRED */
+    height: 100%;         /* makes bottom positioning work */
 }
