@@ -104,7 +104,7 @@ function Profile() {
     };
     return <>
     
-    <div className = "block" style={{height:"100vh" }}>
+    <div className = "block" style={{height:"100vh" ,marginTop: "0",paddingTop:"180px" }}>
     <SiteTitle title = "Profile" subtitle = "about you"/>
 <div style = {{display: "grid", gridTemplateColumns:"2fr 1fr", gap:"120px"}}>
        <div className = "column-container" style = {{marginTop:"50px"}}>

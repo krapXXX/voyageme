@@ -124,7 +124,7 @@ const { isSmallScreen } = useContext(AppContext);
 
     return <>
         {/* Your Next Adventure Starts Here */}
-    <div className="block " style={{ backgroundImage: 'url("/img/hero.png")', backgroundSize: "cover", width: "100%", height: "900px", marginRight: "0", marginLeft: "0", marginTop: "-140px"}}>
+    <div className="block " style={{ backgroundImage: 'url("/img/hero.png")', backgroundSize: "cover", width: "100%", height: "100vh", marginRight: "0", marginLeft: "0", marginTop: "0"}}>
              <div className="column-container" style={{ width: "50%", marginTop: "280px", position: "absolute", top: "0" ,left:"10%"}}>
                  <h1 style={{ color: "white" }}>Your Next Adventure Starts Here</h1>
                  <h4 style={{ marginTop: "30px", color: "#A8A8A8" }}>Dreaming of sun-kissed beaches, historic cities, or mountain escapes? Don't wait — the world is ready for you!</h4>

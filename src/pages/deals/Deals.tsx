@@ -145,7 +145,7 @@ export default function Deals() {
 
     return (
         <>
-          <div className="block" >
+          <div className="block" style={{ marginTop: "0",paddingTop:"180px" }}>
             <SiteTitle title="We’re flying tomorrow!" subtitle="HOT DEALS" />
             <h3 style={{ color: "#808080", marginTop: "20px" }}>
                 Book now — the best destinations at a great price.
