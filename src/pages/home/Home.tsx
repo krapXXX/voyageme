@@ -124,15 +124,16 @@ const { isSmallScreen } = useContext(AppContext);
 
     return <>
         {/* Your Next Adventure Starts Here */}
-        <div className="block " style={{ backgroundImage: 'url("/img/hero.png")', backgroundSize: "cover", width: "100%", height: "900px", marginRight: "0", marginLeft: "0", marginTop: "0" }}>
-            <div className="column-container" style={{ width: "50%", marginTop: "280px", position: "absolute", top: "0" ,left:"10%"}}>
-                <h1 style={{ color: "white" }}>Your Next Adventure Starts Here</h1>
-                <h4 style={{ marginTop: "30px", color: "#A8A8A8" }}>Dreaming of sun-kissed beaches, historic cities, or mountain escapes? Don't wait — the world is ready for you!</h4>
-                <div style={{ marginTop: "30px" }}>
-                    <SiteButton to="/deals" buttonType={ButtonTypes.Blur} text="Explore Hot Deals" width={"290px"} />
-                </div>
-            </div>
-        </div>
+    <div className="block " style={{ backgroundImage: 'url("/img/hero.png")', backgroundSize: "cover", width: "100%", height: "900px", marginRight: "0", marginLeft: "0", marginTop: "-140px"}}>
+             <div className="column-container" style={{ width: "50%", marginTop: "280px", position: "absolute", top: "0" ,left:"10%"}}>
+                 <h1 style={{ color: "white" }}>Your Next Adventure Starts Here</h1>
+                 <h4 style={{ marginTop: "30px", color: "#A8A8A8" }}>Dreaming of sun-kissed beaches, historic cities, or mountain escapes? Don't wait — the world is ready for you!</h4>
+                 <div style={{ marginTop: "30px" }}>
+                     <SiteButton to="/deals" buttonType={ButtonTypes.Blur} text="Explore Hot Deals" width={"290px"} />
+                 </div>
+             </div>
+         </div>
+      
 
         {/* Discover World With Us */}
         <div className="block">
@@ -254,7 +255,7 @@ const { isSmallScreen } = useContext(AppContext);
             <div className="grid2">
 
                 <div className="column-container" >
-                    <SiteTitle to="/abous" title="Dream. Travel. Live." subtitle="ABOUT us" />
+                    <SiteTitle to="/about" title="Dream. Travel. Live." subtitle="ABOUT us" />
 
                     <div style={{ marginTop: "110px" }}>
                         <SiteBlock height='198px' width='392px' backgroundImage="/img/dream_travel_live.jpg" />

@@ -12,16 +12,18 @@ export default function RequestBlock() {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [error, setError] = useState("");
-    const {showToast}=useContext(AppContext);
+    const {showToast, user}=useContext(AppContext);
 
     function handleSubmit() {
-        if (name.length < 3) {
-            setError("Name must be at least 3 characters.");
-            return;
-        }
-        if (!/^\d{12}$/.test(phone)) {
-            setError("Phone number must contain exactly 12 digits.");
-            return;
+       if (!user) {
+            if (name.length < 3) {
+                setError("Name must be at least 3 characters.");
+                return;
+            }
+            if (!/^\d{12}$/.test(phone)) {
+                setError("Phone number must contain exactly 12 digits.");
+                return;
+            }
         }
 
         setError("");
@@ -44,11 +46,12 @@ export default function RequestBlock() {
                                 Submit a request and get your perfect vacation, effortlessly.
                             </h4>
 
-                            <div>
-                                <SiteInput text="Name" value={name} onChange={setName} />
-                                <SiteInput text="Phone Number" value={phone} onChange={setPhone} />
-                            </div>
-
+                             {!user && (
+                                <div>
+                                    <SiteInput text="Name" value={name} onChange={setName} />
+                                    <SiteInput text="Phone Number" value={phone} onChange={setPhone} />
+                                </div>
+                            )}
                             {error && (
                                 <h4 style={{ color: "#6B6963", marginTop: "20px", fontSize:"16px" }}>
                                     {error}

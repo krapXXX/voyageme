@@ -9,7 +9,7 @@ body{
 }
 
 header {
-    position: absolute;
+     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -35,7 +35,9 @@ header {
 .header-black .nav-link {
     color: #18150E !important;
 }
-
+.nav-link:hover{
+    opacity:0.5;
+}
 .header-black .navbar-brand img {
     filter: brightness(0) invert(0);
 }

@@ -1,0 +1,12 @@
+.app-modal {
+    background-color: #888888cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index:2;
+
+}

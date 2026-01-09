@@ -28,7 +28,7 @@ export default function About() {
             .catch(console.error);
     }, []);
     return <>
-        <div className="block " style={{ marginTop: "0", paddingTop: "180px" }}>
+        <div className="block " >
             <div className="grid4" >
                 <h1>About<br /> <strong>VoyageME</strong></h1>
                 <div className="column-container" style={{ display: "flex", justifyContent: "space-between" }}>

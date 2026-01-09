@@ -77,7 +77,7 @@ export default function Product() {
             </div>
         }
         { isSmallScreen &&
-         <div className="block" style={{ marginTop: "0", paddingTop: "180px" }}>
+         <div className="block" >
                 <h2>{product.name}</h2>
                 <h4 style={{ color: "#808080" }}>{product.location}</h4>
                     <img style = {{width :"100%",height:"370px", marginTop:"20px", borderRadius:"24px", objectFit: "cover" }}src = {product.imageUrl[0]}/>

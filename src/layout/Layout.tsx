@@ -3,9 +3,9 @@ import './ui/Layout.css'
 import ButtonTypes from "../features/buttons/types/ButtonTypes";
 import SiteButton from "../features/buttons/SiteButton";
 import RequestBlock from "../component/RequestBlock";
+import { useState } from "react";
 
 export default function Layout() {
- 
      const location = useLocation();
     const isHome = location.pathname === "/home" || location.pathname === "/";
     const isRequest = location.pathname === "/home" || location.pathname === "/about" || location.pathname === "/deals" ||  location.pathname.startsWith("/product/");;
@@ -47,23 +47,24 @@ export default function Layout() {
                             </li> */}
                         </ul>
                       <ul className="navbar-nav ms-auto d-flex align-items-center gap-3">
-    <li className="nav-item">
+    {/* <li className="nav-item">
         <Link to="/like" className="nav-link" aria-label="Liked">
             <img src="/img/like.png" alt="Like" />
         </Link>
-    </li>
+    </li> */}
 
+  
+
+    <li className="nav-item">
+        <div  className="nav-link" aria-label="Contacts">
+            <img src="/img/phone.png" alt="Phone" /> +380554327890
+        </div>
+    </li>
     <li className="nav-item">
         <Link to="/profile" className="nav-link" aria-label="Profile">
             <img src="/img/profile.png" alt="Profile" />
         </Link>
     </li>
-
-    {/* <li className="nav-item">
-        <Link to="/contacts" className="nav-link" aria-label="Contacts">
-            <img src="/img/phone.png" alt="Phone" />
-        </Link>
-    </li> */}
 </ul>
 
                         <div className="navbar-btn ms-3">
@@ -107,7 +108,7 @@ export default function Layout() {
                 
             </div>
             <div className="footer-col">
-                <h3   style={{ color: "#CAC8C3" }}>  <Link to="/" className="nav-link " title="Contacts" aria-label="Contacts" >Contacts</Link></h3>
+                <h3   style={{ color: "#CAC8C3" }}> Contacts</h3>
                 <h4 style={{ marginTop: "20px",color: "#CAC8C3"  }}>
                     <i className="bi bi-pin"></i>17A Horizon Street, Office 304 Kyiv, 01001, Ukraine</h4>
                 <h4   style={{ color: "#CAC8C3" }}> <i className="bi bi-telephone"></i>+380671215656</h4>

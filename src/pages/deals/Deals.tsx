@@ -51,16 +51,16 @@ function ProductCardBig({ item }: { item: ProductPageSection }) {
                         <h4 style={{ color: "#808080" }}>Price for {item.tourists}</h4>
                     </div>
                     <div className = "row-container" style ={{display:"flex", alignItems:"center"}}>
-                        <SiteButton width = "160px" to={"/product/" + item.slug} buttonType={ButtonTypes.Black} text="Learn More " />
+                        <SiteButton width = "180px" to={"/product/" + item.slug} buttonType={ButtonTypes.Black} text="Learn More " />
    
-        <img
+        {/* <img
             src="/img/like.png"
             style={{
                 marginLeft:"20px",
                 width: "24px",
                 display: "block"
             }}
-        />
+        /> */}
 
                     </div>
 
@@ -109,7 +109,7 @@ function ProductCardSmall({ item }: { item: ProductPageSection }) {
                         <h4 style={{ color: "#808080" }}>Price for {item.tourists}</h4>
                            <div className = "row-container" style ={{display:"flex", alignItems:"center"}}>
                         <SiteButton  to={"/product/" + item.slug} buttonType={ButtonTypes.Black} text="Learn More " />
-   
+{/*    
         <img
             src="/img/like.png"
             style={{
@@ -117,7 +117,7 @@ function ProductCardSmall({ item }: { item: ProductPageSection }) {
                 width: "24px",
                 display: "block"
             }}
-        />
+        /> */}
 
                     </div>
 
@@ -145,7 +145,7 @@ export default function Deals() {
 
     return (
         <>
-          <div className="block" style={{ marginTop: "0", paddingTop: "180px" }}>
+          <div className="block" >
             <SiteTitle title="We’re flying tomorrow!" subtitle="HOT DEALS" />
             <h3 style={{ color: "#808080", marginTop: "20px" }}>
                 Book now — the best destinations at a great price.

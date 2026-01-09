@@ -10,7 +10,7 @@ export default function SiteButton({
  radius="100px",
     icon,
     to,
-    onClick
+    onClick,
 }: {
     buttonType: ButtonTypes;
     text?: string;

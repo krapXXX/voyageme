@@ -12,6 +12,10 @@ import type ToastData from '../features/app_context/ToastData';
 import { AppContext } from '../features/app_context/AppContext';
 import "./ui/App.css";
 import Error from '../pages/error/Error';
+import type { UserType } from '../entities/user/model/UserType';
+import type LikeType from '../entities/like/model/LikeType';
+import LikeDao from '../entities/like/api/LikeDao';
+import Auth from '../pages/auth/Auth';
 
 export default function App() {
    const [toastQueue, setToastQueue] = useState<ToastData[]>([]);
@@ -34,8 +38,25 @@ export default function App() {
         window.addEventListener("resize", onResize);
         return () => window.removeEventListener("resize", onResize);
     }, []);
- 
- return <AppContext.Provider value ={{showToast, isSmallScreen }}>
+    const[isBusy, setBusy] = useState<boolean>(false);
+    const [user, setUser] = useState<UserType | null>(null);
+    const [like, setLike] = useState<LikeType>(LikeDao.restoreSaved());
+ useEffect(() => {
+        const savedUser = window.localStorage.getItem("user-231");
+        if (savedUser) {
+            try {
+                setUser(JSON.parse(savedUser))
+            }
+            catch (err) {
+                console.error("User restore error: ", err);
+            }
+        }
+        return () => {
+            console.log("App finished");
+        };
+    }, []);
+ return <AppContext.Provider value ={{ isBusy, setBusy, user, setUser, showToast, like, setLike, isSmallScreen  }}>
+
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />} >
@@ -48,7 +69,7 @@ export default function App() {
                     {/* <Route path='testimonials' element={<Testimonials />} />
                     <Route path='contacts' element={<Contacts />} /> */}
                     <Route path='like' element={<Liked />} />
-                    <Route path='profile' element={<Liked />} />
+                    <Route path='profile' element={<Auth />} />
 
                 </Route>
             </Routes>
